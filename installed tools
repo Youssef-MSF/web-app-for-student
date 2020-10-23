@@ -1,0 +1,11 @@
+-> pip install django
+-> django-admin startproject shukudai
+-> python -m pip install --upgrade Pillow
+
+*** Steps ***
+1. startapp shukudai
+2. startapp accounts
+
+*** to create the super user ***
+1. python manage.py migrate
+2. python manage.py createsuperuser

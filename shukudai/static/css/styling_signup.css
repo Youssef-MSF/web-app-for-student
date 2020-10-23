@@ -1,0 +1,176 @@
+body {
+    height: 100%;
+}
+
+.navbar {
+    height: 10%;
+    background-color: #2B3137;
+    display: flex;
+}
+
+.logo-home-page a {
+    color: white;
+}
+
+.logo-home-page a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.signup-login-home-page {
+    flex: 0.3;
+}
+
+.signup-login-home-page a {
+    color: white;
+    font-size: large;
+    font-weight: bolder;
+    border-bottom: 1px solid antiquewhite;
+    border-radius: 10%;
+    padding: 1%;
+    margin-left: 5%;
+}
+
+.signup-login-home-page a:hover {
+    text-decoration: none;
+    color: gray;
+    border-bottom: 2px solid gray;
+}
+
+.signup-form-container {
+    background-color: gray;
+    padding: 2%;
+}
+
+.signup-form {
+    position: relative;
+    left: 20%;
+    display: inline-block;
+    padding: 5%;
+    width: 60%;
+    background-color: white;
+}
+
+.welcome-signup {
+    text-align: center;
+}
+
+.welcome-signup p {
+    font-family: monospace;
+    font-size: larger;
+}
+
+.signup-form input {
+    border-bottom: 1px solid black;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    width: 90%;
+    padding: 2%;
+}
+
+.signup-form label {
+    font-weight: bolder;
+}
+
+.fullname-username {
+    display: flex;
+}
+
+.username-class,
+.fullname-class,
+.gender-class,
+.age-class,
+.password-class,
+.password-confirmation-class {
+    flex: 0.5;
+}
+
+.gendre-age {
+    display: flex;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.password-confirm {
+    display: flex;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.submit-button input {
+    margin-top: 5%;
+    border: none;
+    background-color: cornflowerblue;
+    padding: 2%;
+    width: 100%;
+}
+
+.form-expression {
+    margin-left: -10%;
+    margin-right: -10%;
+    margin-top: -10%;
+    background-color: #2B3137;
+    padding: 3%;
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+.form-expression p {
+    font-weight: bolder;
+    font-size: x-large;
+    color: aliceblue;
+}
+
+.back-to-login {
+    margin-top: 5%;
+}
+
+.footer {
+    padding: 1%;
+}
+
+.footer-copyright-media {
+    text-align: center;
+}
+
+.footer-copyright {
+    color: black;
+    margin-bottom: 1%;
+    font-weight: bold;
+}
+
+.footer-media {
+    display: contents;
+}
+
+.footer-media a {
+    color: #586069;
+    margin-left: 2%;
+}
+
+.footer-media a:hover {
+    color: initial;
+}
+
+@media(max-width: 650px) {
+    .fullname-username,
+    .gendre-age,
+    .password-confirm {
+        display: block;
+    }
+    .signup-form {
+        left: 5%;
+        width: 90%;
+    }
+    .form-expression {
+        margin-left: -6.5%;
+        margin-right: -6.5%;
+        margin-top: -6.5%;
+        background-color: #2B3137;
+        padding: 3%;
+        margin-bottom: 5%;
+        text-align: center;
+    }
+}

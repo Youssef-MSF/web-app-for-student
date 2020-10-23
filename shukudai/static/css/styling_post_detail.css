@@ -1,0 +1,189 @@
+body {
+    /*background-color: gray;*/
+    height: 100%;
+}
+
+.navbar {
+    height: 10%;
+    background-color: #2B3137;
+    display: flex;
+}
+
+.logo-home-page a {
+    color: white;
+}
+
+.logo-home-page a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.signup-login-home-page {
+    flex: 0.3;
+}
+
+.signup-login-home-page a {
+    color: white;
+    font-size: large;
+    font-weight: bolder;
+    border-bottom: 1px solid antiquewhite;
+    border-radius: 10%;
+    padding: 1%;
+    margin-left: 5%;
+}
+
+.signup-login-home-page a:hover {
+    text-decoration: none;
+    color: gray;
+    border-bottom: 2px solid gray;
+}
+
+.main-post-detail {
+    display: flex;
+    margin: 5%;
+}
+
+.poster-info {
+    flex-grow: 0.3;
+    padding: 3%;
+    text-align: center;
+}
+
+.post-detail {
+    flex-grow: 0.7;
+}
+
+.poster-info img {
+    border-radius: 50%;
+}
+
+.poster-info p {
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.post-title-container {
+    background-color: #2B3137;
+    margin: 5%;
+    padding: 2%;
+    color: cornsilk;
+    text-align: center;
+}
+
+.post-content-container {
+    padding-top: 5%;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-bottom: 3%;
+    font-size: large;
+    font-family: Century Gothic;
+    text-indent: 5%;
+    font-weight: bold;
+}
+
+.post-date {
+    text-align: right;
+    color: gray;
+}
+
+.post-comments-container {}
+
+.comment {
+    display: flex;
+    margin: 2%;
+    padding: 2%;
+}
+
+.commenter-info {
+    flex: 0.1;
+}
+
+.commenter-info img {
+    border-radius: 50%;
+}
+
+.commenter-info p {
+    display: inline-block;
+    font-weight: bolder;
+    font-size: x-large;
+}
+
+.comment-date {
+    display: inline-block;
+    float: right;
+    color: gray;
+}
+
+.commenter-name {
+    display: inline-block;
+    font-size: x-large;
+}
+
+.comment-content {
+    flex: 0.9;
+    font-weight: bold;
+    background-color: #F5F5F5;
+    padding: 2%;
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
+.footer {
+    padding: 1%;
+}
+
+.footer-copyright-media {
+    text-align: center;
+}
+
+.footer-copyright {
+    color: black;
+    margin-bottom: 1%;
+    font-weight: bold;
+}
+
+.footer-media {
+    display: contents;
+}
+
+.footer-media a {
+    color: #586069;
+    margin-left: 2%;
+}
+
+.footer-media a:hover {
+    color: initial;
+}
+
+#comment {
+    width: 100%;
+}
+
+.comment-form {
+    margin-top: 50%;
+}
+
+.comment-form p {}
+
+.comment-form label {
+    float: left;
+    font-weight: bolder;
+}
+
+.comment-form button {
+    background-color: #77B877;
+    border: 0;
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-radius: 6px;
+    color: white;
+    font-weight: bolder;
+    font-size: xx-small;
+    font-family: 'Copperplate Gothic Light';
+}
+
+.comment-form button:hover {
+    background-color: 449D44;
+}

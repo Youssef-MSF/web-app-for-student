@@ -1,0 +1,361 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+.main {
+    height: 100%;
+    display: flex;
+    border-radius: 100px;
+}
+
+.main__left {
+    height: 100%;
+    flex-grow: 0.05;
+    background-color: #FEFEFE;
+    color: #343452;
+}
+
+.main__middle {
+    height: 100%;
+    flex-grow: 0.70;
+    background-color: #F5F5FB;
+}
+
+.main__right {
+    height: 100%;
+    flex-grow: 0.25;
+    background-color: #FEFEFE;
+}
+
+.main h3 {
+    margin-top: 30%;
+    margin-left: 10%;
+    margin-bottom: 50%;
+    font-size: 25px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.main__left .fa-user-graduate {
+    color: #5E81F4;
+}
+
+.main i {
+    margin-right: 10%;
+}
+
+.main__left li {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 20px;
+    width: 90%;
+}
+
+.main__left li i {
+    margin-right: 10%;
+}
+
+.main__left ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.main__left li:hover {
+    color: #85A0F6;
+    /*background-color: rebeccapurple;*/
+}
+
+.menu-select {
+    background-color: #85A0F6;
+    width: 3px;
+    height: 20px;
+    float: right;
+}
+
+.head {
+    display: flex;
+}
+
+.head-title {
+    flex-grow: 0.5;
+    margin-top: 8%;
+    margin-left: 8%;
+    margin-bottom: 2%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: #18172D;
+    width: 200px;
+}
+
+.head-date {
+    flex-grow: 0.5;
+    margin-top: 8%;
+    margin-left: 8%;
+    margin-bottom: 2%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: #8A8AA2;
+}
+
+.welcome {
+    background-color: #d3f7e1;
+    height: 20%;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-radius: 20px;
+    display: flex;
+}
+
+.welcome-username {
+    flex-grow: 0.5;
+}
+
+.welcome-username-name {
+    color: #047717;
+    margin-left: 10%;
+    font-size: 25px;
+    font-weight: bolder;
+    font-family: cursive;
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+.welcome-username-words {
+    margin-left: 10%;
+    font-weight: bolder;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: inline-block;
+}
+
+.welcome-image img {
+    width: 250px;
+    margin-left: 20%;
+    height: 100%;
+}
+
+.welcome-image {
+    flex-grow: 0.5;
+}
+
+.activity {
+    display: flex;
+    height: 55%;
+}
+
+.activity-calendar {
+    flex-grow: 0.5;
+    margin: 2%;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.activity-todo {
+    flex-grow: 0.5;
+    margin: 2%;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.myCalendar {
+    font-size: 150%;
+    font-weight: bolder;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #5E81F4;
+    text-decoration: underline;
+}
+
+.todo-title {
+    display: flex;
+    font-size: x-large;
+    margin: 5%;
+    text-decoration: underline;
+    color: #5E81F4;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.todo-all-tasks-container {
+    background-color: white;
+    height: 72%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-radius: 5%;
+    overflow-y: scroll;
+}
+
+.todo-task-container {
+    background-color: #F5F5FB;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    border-radius: 3px;
+}
+
+.input-search-todo {
+    background-color: #F5F5FB;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    border-radius: 3px;
+}
+
+.input-search-todo input {
+    width: 70%;
+    margin: 2%;
+    padding: 1%;
+    border: 2px solid #5E81F4;
+    border-radius: 4px;
+    color: #18172D;
+    font-weight: bolder;
+}
+
+.input-search-todo button {
+    float: right;
+    margin: 3%;
+    background-color: #B1ADEE;
+    padding: 2%;
+    border: none;
+}
+
+.todo-task-text {
+    font-size: 17px;
+    font-weight: bolder;
+    padding: 6px;
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.todo-task-container:hover {
+    background-color: yellowgreen;
+    color: #F7E5E9;
+}
+
+.todo-task-text i {
+    float: right;
+}
+
+.fa-check-circle {
+    color: green;
+}
+
+.fa-times-circle {
+    color: red;
+}
+
+.homeworks-section {
+    display: flex;
+    height: 5%;
+}
+
+.profile-pic-container {
+    height: 25%;
+    width: 100%;
+    display: flex;
+}
+
+.logout {
+    margin: 5%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.logout i {
+    float: right;
+}
+
+.div1 {
+    flex-grow: 0.2;
+    height: 100%;
+}
+
+.div2 {
+    flex-grow: 0.2;
+    height: 100%;
+}
+
+.profile-pic {
+    margin-left: 20%;
+    color: #ECECF2;
+    position: relative;
+    flex-grow: 1;
+}
+
+.profile-pic img {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.fa-circle {
+    position: absolute;
+    font-size: 1000%;
+}
+
+.student-name {
+    margin-left: 27%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.student-tag {
+    margin-left: 42%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
+    font-weight: bolder;
+    color: #8A8AA2;
+}
+
+.student-reminders {
+    margin-left: 10%;
+    margin-top: 15%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
+    font-weight: bolder;
+    height: 40%;
+}
+
+.student-reminders i {
+    float: right;
+    color: #8A8AA2;
+    display: flex;
+}
+
+.student-reminders i span {
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
+    background-color: #FF606D;
+}
+
+.reminder {
+    position: relative;
+}
+
+.reminder-type {
+    width: 50px;
+    height: 50px;
+    background-color: #EEF2FD;
+    position: absolute;
+    border-radius: 10%;
+}
+
+.reminder-type i {
+    color: #7694F6;
+    margin-top: 25%;
+    margin-right: 27%;
+    font-size: larger;
+}
+
+.reminder-label {
+    margin-left: 30%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #484863;
+    font-size: medium;
+}
+
+.reminder-date {
+    margin-left: 30%;
+    margin-top: -2%;
+    color: #BEBED5;
+    font-size: medium;
+}

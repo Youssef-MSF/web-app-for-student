@@ -1,0 +1,176 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/styling_dashboard.css' %}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src='https://unpkg.com/v-calendar'></script>
+
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/icon type">
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="main__left">
+            <h3><i class="fas fa-user-graduate"></i>For Students</h3>
+            <ul>
+                <li @click="changeMenu('Dashboard')"><i class="fas fa-columns"></i>Dashboard <span class="menu-select"></span></li>
+                <li @click="changeMenu('Learning plan')"><i class="fas fa-graduation-cap"></i>Learning plan<span class="menu-select"></span></li>
+                <li @click="changeMenu('Resources')"><i class="fas fa-folder-open"></i>Resources<span class="menu-select"></span></li>
+                <li @click="changeMenu('Chat')"><i class="fas fa-comments-alt"></i>Chat<span class="menu-select"></span></li>
+                <li @click="changeMenu('Settings')"><i class="fas fa-user-cog"></i>Settings<span class="menu-select"></span></li>
+            </ul>
+        </div>
+        <div class="main__middle">
+            <div class="head">
+                <div class="head-title">
+                    Dashboard
+                </div>
+                <div class="head-date" id="today">
+                </div>
+            </div>
+            <div class="welcome">
+                <div class="welcome-username">
+                    <p class="welcome-username-name">Welcome {{ user.username }} !</p><br>
+                    <p class="welcome-username-words">Welcome to Your dashboard ! <br> Here you can manage all your stuff.</p>
+                </div>
+                <div class="welcome-image">
+                    <img src="{% static 'images/work.png' %}">
+                </div>
+            </div>
+            <div class="activity">
+                <div class="activity-calendar" id="calendar">
+                    <div>
+                        <p class="myCalendar"><i class="fas fa-calendar-alt"></i> My Calendar</p>
+                    </div>
+                    <v-calendar is-expanded :min-date="new Date()"></v-calendar>
+                </div>
+                <div class="activity-todo">
+                    <div class="todo-title">
+                        <i class="fas fa-clipboard-list"></i>TODO
+                        <div class="input-search-todo">
+                            <form action="">
+                                <input type="text" name="" id="">
+                                <button><i class="fas fa-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="todo-all-tasks-container">
+                        <div class="todo-task-container">
+                            <p class="todo-task-text">task 1 <i class="fas fa-check-circle"></i> <i class="fas fa-times-circle"></i></p>
+                        </div>
+                        <div class="todo-task-container">
+                            <p class="todo-task-text">task 2 <i class="fas fa-check-circle"></i> <i class="fas fa-times-circle"></i></p>
+                        </div>
+                        <div class="todo-task-container">
+                            <p class="todo-task-text">task 3 <i class="fas fa-check-circle"></i> <i class="fas fa-times-circle"></i></p>
+                        </div>
+                        <div class="todo-task-container">
+                            <p class="todo-task-text">task 4 <i class="fas fa-check-circle"></i> <i class="fas fa-times-circle"></i></p>
+                        </div>
+                        <div class="todo-task-container">
+                            <p class="todo-task-text">task 5 <i class="fas fa-check-circle"></i> <i class="fas fa-times-circle"></i></p>
+                        </div>
+                        <div class="todo-task-container">
+                            <p class="todo-task-text">task 6 <i class="fas fa-check-circle"></i> <i class="fas fa-times-circle"></i></p>
+                        </div>
+                        <div class="todo-task-container">
+                            <p class="todo-task-text">task 7 <i class="fas fa-check-circle"></i> <i class="fas fa-times-circle"></i></p>
+                        </div>
+                        <div class="todo-task-container">
+                            <p class="todo-task-text">task 8 <i class="fas fa-check-circle"></i> <i class="fas fa-times-circle"></i></p>
+                        </div>
+                        <div class="todo-task-container">
+                            <p class="todo-task-text">task 9 <i class="fas fa-check-circle"></i> <i class="fas fa-times-circle"></i></p>
+                        </div>
+                        <div class="todo-task-container">
+                            <p class="todo-task-text">task 10 <i class="fas fa-check-circle"></i> <i class="fas fa-times-circle"></i></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="main__right">
+            <div class="logout">
+                <a href="{% url 'logout' %}">Logout <i class="fas fa-sign-out-alt"></i></a>
+            </div>
+            <div class="profile-pic-container">
+                <div class="div1">
+
+                </div>
+                <div class="profile-pic">
+                    <label for="upload-profile-pic">
+                        <img src="{{ user.image.url }}" width="80%" height="80%">
+                    </label>
+                    <input type="file" name="" id="upload-profile-pic" style="display: none;">
+                </div>
+                <div class="div2">
+
+                </div>
+            </div>
+            <div class="student-name">
+                <p>Youssef Moussaaif</p>
+            </div>
+            <div class="student-tag">
+                <p>Student</p>
+            </div>
+            <div class="student-reminders">
+                <p>Reminders <i class="far fa-bell"><span></span></i></p>
+
+                <hr>
+
+                <div style="overflow-y: scroll; height: 100%;">
+                    <div class="reminder">
+                        <span class="reminder-type"><i class="far fa-bell"></i></span>
+                        <p class="reminder-label">Eng - Vocabulary test</p>
+                        <p class="reminder-date">24 Sep 2020, Friday</p>
+                    </div>
+
+                    <div class="reminder">
+                        <span class="reminder-type"><i class="far fa-bell"></i></span>
+                        <p class="reminder-label">Eng - Vocabulary test</p>
+                        <p class="reminder-date">24 Sep 2020, Friday</p>
+                    </div>
+
+                    <div class="reminder">
+                        <span class="reminder-type"><i class="far fa-bell"></i></span>
+                        <p class="reminder-label">Eng - Vocabulary test</p>
+                        <p class="reminder-date">24 Sep 2020, Friday</p>
+                    </div>
+
+                    <div class="reminder">
+                        <span class="reminder-type"><i class="far fa-bell"></i></span>
+                        <p class="reminder-label">Eng - Vocabulary test</p>
+                        <p class="reminder-date">24 Sep 2020, Friday</p>
+                    </div>
+
+                    <div class="reminder">
+                        <span class="reminder-type"><i class="far fa-bell"></i></span>
+                        <p class="reminder-label">Eng - Vocabulary test</p>
+                        <p class="reminder-date">24 Sep 2020, Friday</p>
+                    </div>
+
+                    <div class="reminder">
+                        <span class="reminder-type"><i class="far fa-bell"></i></span>
+                        <p class="reminder-label">Eng - Vocabulary test</p>
+                        <p class="reminder-date">24 Sep 2020, Friday</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

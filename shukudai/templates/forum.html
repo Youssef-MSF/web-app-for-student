@@ -1,0 +1,132 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum: Shukudai</title>
+    <link rel="stylesheet" href="{% static 'css/styling_forum.css' %}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/icon type">
+</head>
+
+<body>
+
+<div class="forum-container">
+    <div class="mini-menu">
+        <table>
+            <tr>
+                <td><i class="fas fa-caret-circle-right" @click="expandMenu"></i></td>
+                <td>
+                    <h2 :class="{'fas fa-caret-circle-left': showMenu}">Shukudai Forum<i class="far fa-comments"
+                                                                                         style="margin-left: 5%;"></i>
+                    </h2>
+                </td>
+                <td>
+                    <i @click="expandMenu" :class="{'fas fa-caret-circle-left': showMenu}"></i>
+                </td>
+            </tr>
+        </table>
+
+
+    </div>
+    <div class="forum-posts-list">
+        <div class="forum-heading">
+            <h1>Forum</h1>
+            <a href="{% url 'addNewPost' %}"><i class="fal fa-plus-circle" style="width: 100%;">Add new post</i></a>
+        </div>
+        <div class="posts-list">
+            <table>
+                <tr>
+                    <th style="text-align: left;">Post</th>
+                    <th></th>
+                    <th>Comments</th>
+                    <th>Date & time</th>
+                </tr>
+                {% for post in posts %}
+
+                    <tr>
+                    <td style="width: 50%">
+                        <div class="post-presentation">
+                            <p class="post-title">{{ post.title }}</p>
+                            <p class="post-overview" style="width: 70%">{{ post.preview }}</p>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="{% url 'post_detail' post_title=post.title %}"><i class="fas fa-external-link-alt" style="color: black;">&nbsp;&nbsp;&nbsp;Open
+                            post</i></a>
+                    </td>
+                    <td>
+                        <div class="post-comments">
+                            <i class="far fa-comment"></i> <span>{{ post.nb_comments }}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="post-date">
+                            {{ post.published_date }}
+                        </div>
+                    </td>
+                </tr>
+
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div :class="{'forum-menu' : true, 'show-forum-menu': showMenu, 'hide-forum-menu': !showMenu}">
+        <a href="forum.html">
+            <h2><i class="far fa-comments"></i>Shukudai Forum</h2>
+        </a>
+        <div class="utile-links">
+            <ul>
+                <a href="#">
+                    <li><i class="fas fa-search"></i></li>
+                </a>
+                <a href="index.html">
+                    <li>Home</li>
+                </a>
+                <a href="signup.html">
+                    <li>Sign up</li>
+                </a>
+                <a href="login.html">
+                    <li>Sign in</li>
+                </a>
+            </ul>
+        </div>
+        <div class="quick-login-form">
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                <label for="email">Email</label><br><input type="email" name="email" id="email" required="true"><br>
+                <label for="password">Password</label><br><input type="password" name="password" id="password"
+                                                                 required="true"><br>
+                <input type="submit" value="Login" id="submit-button">
+                {% for message in messages %}
+                <h3 style="text-align: center;color: red;font-size: x-larger;">{{ message }}</h3>
+                {% endfor %}
+            </form>
+        </div>
+        <div class="footer">
+            <div class="footer-copyright-media">
+                <div class="footer-copyright">
+                    &copy; 2020 Shukudai. Created by Youssef
+                </div>
+                <div class="footer-media">
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-github"></i></a>
+                    <a href=""><i class="fab fa-youtube"></i></a>
+                    <a href=""><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

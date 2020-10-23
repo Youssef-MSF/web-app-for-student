@@ -1,0 +1,186 @@
+.home-page {
+    height: 100%;
+}
+
+.navbar {
+    height: 10%;
+    background-color: #2B3137;
+    display: flex;
+}
+
+.welcome-section {
+    background-color: #2B3137;
+    opacity: 0.9;
+}
+
+.welcome-section-container {
+    background-image: url('studying1.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    opacity: 1;
+    height: 100%;
+}
+
+.welcome-section h1 {
+    animation: type 3s steps(50);
+    overflow: hidden;
+    white-space: nowrap;
+    color: rgb(247, 245, 245);
+    text-align: center;
+    font-size: 210%;
+    font-weight: bolder;
+}
+
+.welcome-section p {
+    color: white;
+    text-align: center;
+    font-size: x-large;
+    padding: 7%;
+    padding-top: 3%;
+}
+
+.home-page-main-content {
+    background-color: white;
+    display: flex;
+}
+
+.site-intro {
+    padding: 10%;
+}
+
+.footer {
+    padding: 1%;
+    height: 20%;
+    background-color: #FAFBFC;
+}
+
+.footer-copyright-media {
+    text-align: center;
+}
+
+.footer-copyright {
+    color: #586069;
+    margin-bottom: 1%;
+}
+
+.footer-media {
+    display: contents;
+}
+
+.footer-media a {
+    color: #586069;
+    margin-left: 2%;
+}
+
+.footer-media a:hover {
+    color: initial;
+}
+
+.logo-home-page {}
+
+.logo-home-page a {
+    color: white;
+}
+
+.logo-home-page a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.signup-login-home-page {
+    flex: 0.3;
+}
+
+.signup-login-home-page a {
+    color: white;
+    font-size: larger;
+    font-weight: bolder;
+    border-bottom: 1px solid antiquewhite;
+    border-radius: 10%;
+    padding: 1%;
+    margin-left: 5%;
+}
+
+.signup-login-home-page a:hover {
+    text-decoration: none;
+    color: gray;
+    border-bottom: 2px solid gray;
+}
+
+.signup-form {
+    position: relative;
+    left: 10%;
+    background-color: aliceblue;
+    display: inline-block;
+    padding: 5%;
+    border-radius: 3%;
+    width: 80%;
+}
+
+.signup-form label {
+    color: #3E4347;
+    font-weight: bolder;
+}
+
+.signup-form input {
+    width: 100%;
+    border-radius: 5px;
+    height: 50px;
+    border-bottom: 0.5px solid gray;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: larger;
+    margin-bottom: 5%;
+}
+
+.signup-form input:focus {
+    background-color: rgb(187, 245, 201);
+}
+
+#signup-button {
+    background-color: #3598DC;
+    border: none;
+    color: white;
+}
+
+@media(min-width: 950px) {
+    .welcome-section {
+        display: flex;
+        height: 100%;
+    }
+    .welcoming {
+        flex: 0.5;
+        margin-top: 10%;
+    }
+    .signup-form-container {
+        flex: 0.5;
+        margin-top: 7%;
+    }
+    .signup-form {
+        width: 50%;
+        left: 25%;
+    }
+    .welcome-section h1 {
+        font-size: 350%;
+    }
+}
+
+@media(max-width: 950px) {
+    .home-page-main-content {
+        background-color: white;
+        display: block;
+    }
+    .home-page-main-content img {
+        width: 100%;
+    }
+}
+
+@keyframes type {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}

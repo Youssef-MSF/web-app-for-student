@@ -1,0 +1,129 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Students</title>
+    <link rel="stylesheet" href="{% static 'css/styling_index.css' %}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+            crossorigin="anonymous"></script>
+
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/icon type">
+</head>
+
+<body>
+
+<div class="home-page">
+    <div class="navbar">
+        <div class="logo-home-page">
+            <a href="/"><i class="fas fa-user-graduate"></i>&nbsp; Shukudai</a>
+        </div>
+        <div class="signup-login-home-page">
+            {% if not user.is_authenticated %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'register' %}">Sign up</a>
+            {% else %}
+            <a href="{% url 'logout' %}">Sign out</a>
+            <span style="color: rgb(34, 240, 34);
+    border: 1px solid rgb(20, 231, 20);
+    border-radius: 40px;
+    padding: 1px;
+    padding-left: 2%;
+    padding-right: 2%;
+    font-weight: bolder;
+    float: right;">online</span>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="welcome-section-container">
+        <div class="welcome-section">
+            <div class="welcoming">
+                <h1>Built just for students</h1>
+                <p><span style="font-weight: bolder; color: rgb(248, 245, 245);">Shukudai</span> is a free platform
+                    where you can manage and do all your homeworks and interact with other students from all over the
+                    world.</p>
+            </div>
+            <div class="signup-form-container">
+                <div class="signup-form">
+                    <form action="">
+                        <label for="studentname">Studentname</label><br>
+                        <input type="text" name="username" id="studentname" required="true"><br>
+
+                        <label for="email">Email</label><br>
+                        <input type="text" name="email" id="email" required="true"><br>
+
+                        <label for="password">Password</label><br>
+                        <input type="password" name="password" id="password" required="true">
+
+                        <br><br>
+                        <input type="submit" name="signup" id="signup-button" value="Sign up">
+                    </form>
+                </div>
+                <br><br><br><br><br><br>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="home-page-main-content">
+        <img src="{% static 'images/dd.jpg' %}" alt="" width="50%">
+        <div class="site-intro">
+            <p style="font-weight: bold;">Imagine you have a virtual desk where you can stick all your todo tasks and
+                orgnize your time, in addition to this you can interact with your friends in order to do all your
+                homeworks.</p>
+            <p style="font-weight: bold;">Shukudai allows you to do all this in one place.</p>
+
+            <h4 style="color: #86898B;">Manage your tasks</h4>
+            <p style="padding-left: 3%;">You can add a new task with its importance or emergency and the system will
+                show them to you and remind you everytime.</p>
+
+            <h4 style="color: #86898B;">Manage your reminders</h4>
+            <p style="padding-left: 3%;">Shukudai allows you to choose an importante date in your own calendar and then
+                remind you when it comes.</p>
+
+            <h4 style="color: #86898B;">Manage your homeworks</h4>
+            <p style="padding-left: 3%;">Shukudai allows you to organize your homeworks by indexing them and much more
+                things.</p>
+
+            <h4 style="color: #86898B;">Talk to your friends</h4>
+            <p style="padding-left: 3%;">Shukudai-forum allows you to interact with other students or friends to share
+                solutions and ideas.</p>
+
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-copyright-media">
+            <div class="footer-copyright">
+                &copy; 2020 Shukudai. Created by Youssef
+            </div>
+            <div class="footer-media">
+                <a href=""><i class="fab fa-facebook"></i></a>
+                <a href=""><i class="fab fa-github"></i></a>
+                <a href=""><i class="fab fa-youtube"></i></a>
+                <a href=""><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>
