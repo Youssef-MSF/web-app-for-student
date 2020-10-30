@@ -187,3 +187,9 @@ body {
         margin-top: 30%;
     }
 }
+
+@media(max-width: 950px) {
+    .signup-login-home-page {
+    flex: 0.7;
+}
+}

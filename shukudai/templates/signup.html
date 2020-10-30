@@ -30,9 +30,10 @@
         <a href="/"><i class="fas fa-user-graduate"></i>&nbsp; Shukudai</a>
     </div>
     <div class="signup-login-home-page">
+        {% if not user.is_authenticated %}
         <a href="{% url 'login' %}">Login</a>
         <a href="{% url 'register' %}">Sign up</a>
-        {% if user.is_authenticated %}
+        {% else %}
         <a href="{% url 'logout' %}">Sign out</a>
         <span style="color: rgb(34, 240, 34);
     border: 1px solid rgb(20, 231, 20);
@@ -41,7 +42,7 @@
     padding-left: 2%;
     padding-right: 2%;
     font-weight: bolder;
-    float: right;">online</span>
+    float: right;">{{ user.username }} online</span>
         {% endif %}
     </div>
 </div>
@@ -72,7 +73,7 @@
                             <label for="male">Male</label>
                         </td>
                         <td>
-                            <input type="radio" name="gender" id="male" style="width: 100px;" required="true">
+                            <input type="radio" name="gender" value="Male" id="male" style="width: 100px;" required="true">
                         </td>
                     </tr>
                     <tr>
@@ -80,7 +81,7 @@
                             <label for="female">Female</label>
                         </td>
                         <td>
-                            <input type="radio" name="gender" id="female" style="width: 100px;" required="true">
+                            <input type="radio" name="gender" value="Female" id="female" style="width: 100px;" required="true">
                         </td>
                     </tr>
                 </table>
@@ -93,6 +94,11 @@
         </div>
         <div class="email">
             <label for="email">Email</label><br><input type="email" name="email" id="email" style="width: 97%;"
+                                                       required="true">
+        </div>
+        <br>
+        <div class="email">
+            <label for="nationality">Nationality</label><br><input type="text" name="nationality" id="nationality" style="width: 97%;"
                                                        required="true">
         </div>
         <div class="password-confirm">
@@ -109,7 +115,7 @@
             <input type="submit" value="Sign up" style="font-weight: bolder;">
         </div>
         <div class="back-to-login">
-            <p>Already have an account ? <a href="login.html">Login</a> now.</p>
+            <p>Already have an account ? <a href="{% url 'login' %}">Login</a> now.</p>
         </div>
         {% for message in messages %}
         <h3 style="text-align: center;color: red;font-size: x-larger;">{{ message }}</h3>

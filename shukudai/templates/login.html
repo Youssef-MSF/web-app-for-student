@@ -30,9 +30,10 @@
         <a href="/"><i class="fas fa-user-graduate"></i>&nbsp; Shukudai</a>
     </div>
     <div class="signup-login-home-page">
+        {% if not user.is_authenticated %}
         <a href="{% url 'login' %}">Login</a>
         <a href="{% url 'register' %}">Sign up</a>
-        {% if user.is_authenticated %}
+        {% else %}
         <a href="{% url 'logout' %}">Sign out</a>
         <span style="color: rgb(34, 240, 34);
     border: 1px solid rgb(20, 231, 20);
@@ -41,7 +42,7 @@
     padding-left: 2%;
     padding-right: 2%;
     font-weight: bolder;
-    float: right;">online</span>
+    float: right;">{{ user.username }} online</span>
         {% endif %}
     </div>
 </div>
@@ -61,7 +62,7 @@
             <input type="submit" value="Sign in" style="font-weight: bolder;" required="true">
         </div>
         <div class="back-to-login">
-            <p>Don't have an account ? <a href="signup.html">Sign up</a> now.</p>
+            <p>Don't have an account ? <a href="{% url 'register' %}">Sign up</a> now.</p>
         </div>
         {% for message in messages %}
         <h3 style="text-align: center;color: red;font-size: x-larger;">{{ message }}</h3>

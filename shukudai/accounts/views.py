@@ -10,6 +10,7 @@ def register(request):
         fullname = request.POST['fullname']
         gender = request.POST['gender']
         age = request.POST['age']
+        nationality = request.POST['nationality']
         email = request.POST['email']
         password1 = request.POST['password']
         password2 = request.POST['password_confirm']
@@ -23,7 +24,7 @@ def register(request):
                 return render(request, 'signup.html')
             else:
                 student = Student.objects.create_user(username=username, fullname=fullname, gender=gender, age=age,
-                                                      email=email, password=password1)
+                                                      email=email, nationality=nationality, password=password1)
                 student.save()
                 return redirect('login')
         else:

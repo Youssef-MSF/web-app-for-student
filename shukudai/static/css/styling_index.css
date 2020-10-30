@@ -115,6 +115,7 @@
     padding: 5%;
     border-radius: 3%;
     width: 80%;
+    margin-bottom: 20%;
 }
 
 .signup-form label {
@@ -143,6 +144,7 @@
     border: none;
     color: white;
 }
+
 
 @media(min-width: 950px) {
     .welcome-section {
@@ -174,6 +176,9 @@
     .home-page-main-content img {
         width: 100%;
     }
+    .signup-login-home-page {
+    flex: 0.7;
+}
 }
 
 @keyframes type {

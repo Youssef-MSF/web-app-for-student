@@ -3,14 +3,14 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
 class StudentManager(BaseUserManager):
-    def create_user(self, email, username, fullname, gender, age, password=None):
+    def create_user(self, email, username, fullname, gender, age, nationality, password=None):
         if not email:
             raise ValueError("Users must have an email")
         if not username:
             raise ValueError("Users must have a username")
 
         user = self.model(email=self.normalize_email(email), username=username, fullname=fullname, gender=gender,
-                          age=age
+                          age=age, nationality=nationality
                           , )
         user.set_password(password)
         user.save(using=self._db)
@@ -37,6 +37,7 @@ class Student(AbstractBaseUser):
     gender = models.CharField(max_length=20)
     age = models.IntegerField()
     email = models.EmailField(max_length=60, unique=True)
+    nationality = models.CharField(max_length=100, default=' ')
     image = models.ImageField(upload_to='pics')
     date_joined = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
     last_login = models.DateTimeField(verbose_name='last login', auto_now=True)

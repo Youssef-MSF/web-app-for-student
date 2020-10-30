@@ -1,9 +1,13 @@
 const dashboard = new Vue({
     el: '.main',
-    data: {
-        title: 'For Students',
-        selectedFromMenu: 'Dashboard'
-    },
+    data() {
+    return {
+        range: {
+            start: new Date(2020, 0, 1),
+            end: new Date(2020, 0, 5)
+        }
+    }
+},
     methods: {
         changeMenu: function(selected) {
             this.selectedFromMenu = selected;
@@ -30,5 +34,20 @@ const forum = new Vue({
         expandMenu: function() {
             this.showMenu = !this.showMenu
         }
+    }
+});
+
+
+const app = new Vue({
+    el: '.email-password-login',
+    components: {
+        vuejsDatepicker
+    }
+});
+
+const smthng = new Vue({
+    el: '#calendar',
+    components: {
+        vuejsDatepicker
     }
 });

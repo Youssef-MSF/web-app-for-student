@@ -174,3 +174,9 @@ body {
         text-align: center;
     }
 }
+
+@media(max-width: 950px) {
+    .signup-login-home-page {
+    flex: 0.7;
+}
+}

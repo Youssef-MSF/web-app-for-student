@@ -291,14 +291,12 @@ body {
 }
 
 .student-name {
-    margin-left: 27%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: larger;
     font-weight: bolder;
 }
 
 .student-tag {
-    margin-left: 42%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: larger;
     font-weight: bolder;
@@ -358,4 +356,34 @@ body {
     margin-top: -2%;
     color: #BEBED5;
     font-size: medium;
+}
+
+.reminder-class {
+    width: 70%;
+    position: relative;
+    left: 17%
+}
+
+.reminder-class label {
+    font-weight: bolder;
+}
+
+.reminder-class input {
+    border: none;
+    border-bottom: 1px solid black;
+    width: 92%;
+    padding: 4%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#reminder-date {
+    width: 100%;
+}
+
+#reminder-submit {
+    border: none;
+    width: 100%;
+    background-color: #3C92C1;
+    color: white;
 }

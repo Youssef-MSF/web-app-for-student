@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages, auth
-from .models import Post, Comment
+from .models import Post, Comment, Reminder
 from accounts.models import Student
 
 
@@ -9,7 +9,8 @@ def home(request):
 
 
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    reminders = Reminder.objects.all()
+    return render(request, 'dashboard.html', {'reminders': reminders})
 
 
 def forum(request):
@@ -59,3 +60,51 @@ def send_comment(request):
         return redirect('/forum/post/' + post.title)
     else:
         return render(request, 'postDetail.html')
+
+
+def upload_profile_image(request):
+    if request.method == 'POST':
+        uploaded_profile_image = request.POST['uploaded_profile_image']
+
+
+def settings(request):
+    return render(request, 'settings.html')
+
+
+def update_profile(request):
+    if request.method == 'POST':
+        profile_pic = request.POST['profile_image']
+        fullname = request.POST['fullname']
+        age = request.POST['age']
+        nationality = request.POST['nationality']
+        user_id = request.POST['user_id']
+
+        student = Student.objects.filter(id=user_id)[0]
+        student.nationality = nationality
+        student.age = age
+        student.fullname = fullname
+        student.image = profile_pic
+
+        student.save()
+
+        return redirect('/dashboard')
+
+    else:
+        return render(request, 'settings.html')
+
+
+def set_reminder(request):
+    if request.method == 'POST':
+        user_id = request.POST['user_id']
+        reminder_title = request.POST['reminder_title']
+        reminder_date = request.POST['reminder_date']
+
+        student = Student.objects.filter(id=user_id)[0]
+        reminder = Reminder.objects.create(title=reminder_title, date=reminder_date, student=student)
+
+        reminder.save()
+
+        return redirect('/dashboard')
+
+    else:
+        return render(request, 'dashboard.html')

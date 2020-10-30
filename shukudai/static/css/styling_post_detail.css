@@ -187,3 +187,9 @@ body {
 .comment-form button:hover {
     background-color: 449D44;
 }
+
+@media(max-width: 950px) {
+    .signup-login-home-page {
+    flex: 0.7;
+}
+}

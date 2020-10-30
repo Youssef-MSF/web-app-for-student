@@ -30,9 +30,10 @@
         <a href="/"><i class="fas fa-user-graduate"></i>&nbsp; Shukudai</a>
     </div>
     <div class="signup-login-home-page">
+        {% if not user.is_authenticated %}
         <a href="{% url 'login' %}">Login</a>
         <a href="{% url 'register' %}">Sign up</a>
-        {% if user.is_authenticated %}
+        {% else %}
         <a href="{% url 'logout' %}">Sign out</a>
         <span style="color: rgb(34, 240, 34);
     border: 1px solid rgb(20, 231, 20);
@@ -54,7 +55,7 @@
 
     <div class="poster-info">
         <p class="">{{ post.author.username }}</p>
-        <img src="{{ post.author.image.url }}" width="80%">
+        <img src="{{ post.author.image.url }}" width="80px">
         <form method="POST" action="{% url 'comment' %}" class="comment-form">
             {% csrf_token %}
             <p>Add comment</p>
@@ -62,7 +63,11 @@
                                                             required="true"></textarea>
             <input type="hidden" name="commenter_email" value="{{ user.email }}">
             <input type="hidden" name="post_id" value="{{ post.id }}">
+            {% if user.is_authenticated %}
             <button type="submit"><i class="fas fa-paper-plane"></i>&nbsp;&nbsp;&nbsp;Submit comment</button>
+            {% else %}
+            <button type="submit" disabled="true"><i class="fas fa-paper-plane"></i>&nbsp;&nbsp;&nbsp;Submit comment</button>
+            {% endif %}
         </form>
     </div>
 
@@ -70,7 +75,7 @@
         <div class="post-content-container">
             <p class="post-date">{{ post.published_date }}</p>
             <p>
-                {{ post.content }}
+                {{ post.content | safe }}
             </p>
         </div>
 

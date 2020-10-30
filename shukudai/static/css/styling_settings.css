@@ -1,0 +1,213 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+.main {
+    height: 100%;
+    display: flex;
+    border-radius: 100px;
+}
+
+.main__left {
+    height: 100%;
+    flex-grow: 0.05;
+    background-color: #FEFEFE;
+    color: #343452;
+}
+
+.main__middle {
+    height: 100%;
+    flex-grow: 0.95;
+    background-color: #F5F5FB;
+}
+
+.main h3 {
+    margin-top: 30%;
+    margin-left: 10%;
+    margin-bottom: 50%;
+    font-size: 25px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.main__left .fa-user-graduate {
+    color: #5E81F4;
+}
+
+.main i {
+    margin-right: 10%;
+}
+
+.main__left li {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 20px;
+    width: 90%;
+}
+
+.main__left li i {
+    margin-right: 10%;
+}
+
+.main__left ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.main__left li:hover {
+    color: #85A0F6;
+    /*background-color: rebeccapurple;*/
+}
+
+.menu-select {
+    background-color: #85A0F6;
+    width: 3px;
+    height: 20px;
+    float: right;
+}
+
+.head {
+    display: flex;
+    height: 5%;
+}
+
+.head-title {
+    flex-grow: 0.5;
+    margin-top: 10px;
+    margin-left: 8%;
+    margin-bottom: 2%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: #18172D;
+    width: 200px;
+}
+
+.head-date {
+    flex-grow: 0.5;
+    margin-top: 10px;
+    margin-left: 8%;
+    margin-bottom: 2%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: #8A8AA2;
+}
+
+.profile-pic {
+    text-align: center;
+}
+
+.profile-pic img {
+    border-radius: 50%;
+}
+
+.student-name {
+    text-align: center;
+    font-weight: bolder;
+}
+
+.name {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+}
+
+.student {
+    color: #8A8AA2;
+}
+
+.signup-form-container {
+    background-color: gray;
+    padding: 2%;
+    height: 90%;
+}
+
+.signup-form {
+    position: relative;
+    left: 20%;
+    display: inline-block;
+    padding: 5%;
+    width: 60%;
+    background-color: white;
+    margin-top: 5%;
+}
+
+.welcome-signup {
+    text-align: center;
+}
+
+.welcome-signup p {
+    font-family: monospace;
+    font-size: larger;
+}
+
+.signup-form input {
+    border-bottom: 1px solid black;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    width: 100%;
+    padding: 2%;
+    margin-bottom: 5%;
+}
+
+.signup-form label {
+    font-weight: bolder;
+    font-size: larger;
+    font-family: Consolas;
+}
+
+.gendre-age {
+    display: flex;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.password-confirm {
+    display: flex;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.submit-button input {
+    margin-top: 5%;
+    border: none;
+    background-color: rgb(5, 143, 79);
+    padding: 2%;
+    width: 100%;
+}
+
+.form-expression {
+    margin-left: -8.5%;
+    margin-right: -8.5%;
+    margin-top: -10%;
+    background-color: #2B3137;
+    padding: 3%;
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+.form-expression p {
+    font-weight: bolder;
+    font-size: x-large;
+    color: aliceblue;
+}
+
+#password-update {
+    display: none;
+}
+
+.change-password-btn {
+    background-color: #5E81F4;
+    border: none;
+    padding: 3%;
+    width: 80%;
+    color: aliceblue;
+    font-weight: bolder;
+    margin-bottom: 5%;
+}
+
+.change-password-btn i {
+    float: right;
+}
