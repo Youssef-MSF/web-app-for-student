@@ -63,22 +63,70 @@
         </div>
         <div class="activity">
             <div class="activity-calendar" id="calendar">
-                <div>
-                    <p class="myCalendar"><i class="fas fa-calendar-alt"></i> Add new reminder</p>
+                <div class="options">
+                    <div class="add-reminder-btn circlize" onclick="display('add-reminder-form')">
+                        <img src="{% static 'images/reminder.jpg' %}" alt="Reminder" width="100%" height="100%"
+                             style="border-radius: 50%;">
+                    </div>
+                    <div class="add-task-btn circlize" onclick="display('add-task-form')">
+                        <img src="{% static 'images/task.jpg' %}" alt="Task" width="100%" height="100%"
+                             style="border-radius: 50%;">
+                    </div>
+                    <div class="dictionary-btn circlize" onclick="display('dictionary')">
+                        <img src="{% static 'images/dictionary.jpg' %}" alt="Dictionary" width="100%" height="100%"
+                             style="border-radius: 50%;">
+                    </div>
                 </div>
-                <form method="post" action="{% url 'set_reminder' %}" class="reminder-class">
-                    {% csrf_token %}
+                <div class="details-option">
+                    <div id="add-reminder-form" style="display: none;">
+                        <p style="text-align: center; font-size: larger; font-weight: bolder; font-family: consolas;">
+                            Add new reminder</p>
+                        <form method="post" action="{% url 'set_reminder' %}" class="reminder-class">
+                            {% csrf_token %}
 
-                    <label for="reminder-title">Reminder title:</label><br>
-                    <input type="text" name="reminder_title" id="reminder-title"><br>
+                            <label for="reminder-title">Reminder title:</label><br>
+                            <input type="text" name="reminder_title" id="reminder-title"><br>
 
-                    <input type="text" name="user_id" value="{{ user.id }}" hidden>
+                            <input type="text" name="user_id" value="{{ user.id }}" hidden>
 
-                    <label>Date:</label>
-                    <vuejs-datepicker name="reminder_date" id="reminder-date"></vuejs-datepicker>
+                            <label>Date:</label>
+                            <vuejs-datepicker name="reminder_date" id="reminder-date"></vuejs-datepicker>
 
-                    <input type="submit" value="Add reminder" id="reminder-submit">
-                </form>
+                            <input type="submit" value="Add reminder" id="reminder-submit">
+                        </form>
+                    </div>
+                    <div id="add-task-form" style="display: none;">
+                        <p style="text-align: center; font-size: larger; font-weight: bolder; font-family: consolas;">
+                            Add new task</p>
+                        <form method="post" action="{% url 'add_task' %}" class="reminder-class">
+                            {% csrf_token %}
+
+                            <label for="reminder-title">Task title:</label><br>
+                            <input type="text" name="task_title" id="reminder-title"><br>
+
+                            <input type="text" name="user_id" value="{{ user.id }}" hidden>
+
+                            <label>Date:</label>
+                            <vuejs-datepicker name="task_date" id="reminder-date"></vuejs-datepicker>
+
+                            <input type="submit" value="Add task" id="reminder-submit">
+                        </form>
+                    </div>
+                    <div id="dictionary" style="display: none;">
+                        <form action="{% url 'dictionary' %}" method="post">
+                            {% csrf_token %}
+
+                            <label for="">Dictionary</label><br>
+                            <input type="text" name="word_to_search" class="word-to-search" placeholder="Type a word">
+                            <button type="submit" class="search-word-btn"><i class="fas fa-search"></i></button>
+
+                        </form>
+                        <div class="word-description">
+                            <i class="fas fa-language"></i>
+                            <p> {{ description }} </p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="activity-todo">
                 <div class="todo-title">
@@ -91,46 +139,18 @@
                     </div>
                 </div>
                 <div class="todo-all-tasks-container">
+                    {% for task in tasks %}
+
+                    {% if task.student == user %}
                     <div class="todo-task-container">
-                        <p class="todo-task-text">task 1 <i class="fas fa-check-circle"></i> <i
-                                class="fas fa-times-circle"></i></p>
+                        <p class="todo-task-text"> {{ task.title }} <i style="color: red;" class="fas fa-trash-alt"></i> <i
+                                class="fas fa-check-circle"></i></p>
                     </div>
-                    <div class="todo-task-container">
-                        <p class="todo-task-text">task 2 <i class="fas fa-check-circle"></i> <i
-                                class="fas fa-times-circle"></i></p>
-                    </div>
-                    <div class="todo-task-container">
-                        <p class="todo-task-text">task 3 <i class="fas fa-check-circle"></i> <i
-                                class="fas fa-times-circle"></i></p>
-                    </div>
-                    <div class="todo-task-container">
-                        <p class="todo-task-text">task 4 <i class="fas fa-check-circle"></i> <i
-                                class="fas fa-times-circle"></i></p>
-                    </div>
-                    <div class="todo-task-container">
-                        <p class="todo-task-text">task 5 <i class="fas fa-check-circle"></i> <i
-                                class="fas fa-times-circle"></i></p>
-                    </div>
-                    <div class="todo-task-container">
-                        <p class="todo-task-text">task 6 <i class="fas fa-check-circle"></i> <i
-                                class="fas fa-times-circle"></i></p>
-                    </div>
-                    <div class="todo-task-container">
-                        <p class="todo-task-text">task 7 <i class="fas fa-check-circle"></i> <i
-                                class="fas fa-times-circle"></i></p>
-                    </div>
-                    <div class="todo-task-container">
-                        <p class="todo-task-text">task 8 <i class="fas fa-check-circle"></i> <i
-                                class="fas fa-times-circle"></i></p>
-                    </div>
-                    <div class="todo-task-container">
-                        <p class="todo-task-text">task 9 <i class="fas fa-check-circle"></i> <i
-                                class="fas fa-times-circle"></i></p>
-                    </div>
-                    <div class="todo-task-container">
-                        <p class="todo-task-text">task 10 <i class="fas fa-check-circle"></i> <i
-                                class="fas fa-times-circle"></i></p>
-                    </div>
+
+                    {% endif %}
+
+                    {% endfor %}
+
                 </div>
             </div>
 
@@ -146,7 +166,9 @@
             </div>
             <div class="profile-pic">
                 <label>
-                    <img src="{{ user.image.url }}" width="80%" height="80%">
+                    <img {% if user.image %} src="{{ user.image.url }}" {% else %} src="{% static 'images/mm.jpg' %}"
+                         {%endif %}
+                         width="80%" height="80%">
                 </label>
             </div>
             <div class="div2">
@@ -182,6 +204,17 @@
     </div>
 </div>
 
+<script>
+        let display = function(id_element) {
+            document.getElementById('add-reminder-form').style.display = 'none';
+            document.getElementById('add-task-form').style.display = 'none';
+            document.getElementById('dictionary').style.display = 'none';
+            document.getElementById(id_element).style.display = 'block';
+        }
+
+
+
+</script>
 
 <script src="{% static 'js/main.js' %}"></script>
 </body>

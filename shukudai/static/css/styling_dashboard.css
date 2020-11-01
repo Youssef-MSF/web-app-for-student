@@ -144,13 +144,6 @@ body {
     height: 55%;
 }
 
-.activity-calendar {
-    flex-grow: 0.5;
-    margin: 2%;
-    border-radius: 10px;
-    width: 100%;
-}
-
 .activity-todo {
     flex-grow: 0.5;
     margin: 2%;
@@ -291,12 +284,14 @@ body {
 }
 
 .student-name {
+    margin-left: 27%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: larger;
     font-weight: bolder;
 }
 
 .student-tag {
+    margin-left: 42%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: larger;
     font-weight: bolder;
@@ -358,6 +353,33 @@ body {
     font-size: medium;
 }
 
+.circlize {
+    background-color: #5E81F4;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20%;
+    border-radius: 50%;
+}
+
+.activity-calendar {
+    flex-grow: 0.5;
+    margin: 2%;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 10%;
+    display: flex;
+}
+
+.options {
+    flex-grow: 0.3;
+    height: 100%;
+}
+
+.details-option {
+    flex-grow: 0.7;
+    height: 100%;
+}
+
 .reminder-class {
     width: 70%;
     position: relative;
@@ -377,13 +399,35 @@ body {
     margin-bottom: 5%;
 }
 
-#reminder-date {
-    width: 100%;
-}
-
 #reminder-submit {
     border: none;
     width: 100%;
     background-color: #3C92C1;
     color: white;
+}
+
+#dictionary {
+    margin-left: 10%;
+    width: 300px;
+}
+
+.word-to-search {
+    padding: 2%;
+    font-weight: bolder;
+}
+
+.search-word-btn {
+    padding: 3%;
+    border: none;
+    background-color: #047717;
+    color: white;
+}
+
+.word-description {
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.word-description p {
+    padding: 2%;
 }

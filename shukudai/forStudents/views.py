@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages, auth
-from .models import Post, Comment, Reminder
+from .models import Post, Comment, Reminder, Task
 from accounts.models import Student
+from .forms import UploadProfilePicForm
+
+from PyDictionary import PyDictionary
 
 
 def home(request):
@@ -10,7 +13,8 @@ def home(request):
 
 def dashboard(request):
     reminders = Reminder.objects.all()
-    return render(request, 'dashboard.html', {'reminders': reminders})
+    tasks = Task.objects.all()
+    return render(request, 'dashboard.html', {'reminders': reminders, 'tasks': tasks})
 
 
 def forum(request):
@@ -68,18 +72,21 @@ def upload_profile_image(request):
 
 
 def settings(request):
-    return render(request, 'settings.html')
+    context = {'form': UploadProfilePicForm()}
+    return render(request, 'settings.html', context)
 
 
 def update_profile(request):
     if request.method == 'POST':
-        profile_pic = request.POST['profile_image']
         fullname = request.POST['fullname']
         age = request.POST['age']
         nationality = request.POST['nationality']
         user_id = request.POST['user_id']
 
         student = Student.objects.filter(id=user_id)[0]
+
+        profile_pic = request.FILES.get('profile_image', student.image.name)
+
         student.nationality = nationality
         student.age = age
         student.fullname = fullname
@@ -108,3 +115,31 @@ def set_reminder(request):
 
     else:
         return render(request, 'dashboard.html')
+
+
+def add_task(request):
+    if request.method == 'POST':
+        user_id = request.POST['user_id']
+        reminder_title = request.POST['task_title']
+        reminder_date = request.POST['task_date']
+
+        student = Student.objects.filter(id=user_id)[0]
+        task = Task.objects.create(title=reminder_title, date=reminder_date, student=student)
+
+        task.save()
+
+        return redirect('/dashboard')
+
+    else:
+        return render(request, 'dashboard.html')
+
+
+def translate(request):
+    global description
+    if request.method == 'POST':
+        word = request.POST['word_to_search']
+
+        translation = PyDictionary(word)
+        description = translation.getMeanings()
+
+    return render(request, 'dashboard.html', {'description': description})

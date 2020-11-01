@@ -1,6 +1,7 @@
 -> pip install django
 -> django-admin startproject shukudai
 -> python -m pip install --upgrade Pillow
+-> pip install pydictionary
 
 *** Steps ***
 1. startapp shukudai

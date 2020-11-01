@@ -39,12 +39,12 @@
             </div>
             <div class="activity">
                 <div class="signup-form-container">
-                    <form action="{% url 'update_profile' %}" class="signup-form" method="post">
+                    <form action="{% url 'update_profile' %}" class="signup-form" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="form-expression">
                             <p>Update your personal information</p>
                             <div class="profile-pic">
-                                <label for="profile_image"><img src="{{ user.image.url }}" alt="" width="10%"></label>
+                                <label for="profile_image"><img {% if user.image %} src="{{ user.image.url }}" {% else %} src="{% static 'images/mm.jpg' %}" {% endif %} alt="" width="10%"></label>
                                 <input type="file" name="profile_image" id="profile_image" hidden>
                             </div>
                             <div class="student-name">

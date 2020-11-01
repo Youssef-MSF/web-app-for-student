@@ -12,5 +12,7 @@ urlpatterns = [
     path('upload_profile_image', views.upload_profile_image, name='upload_profile_image'),
     path('settings/', views.settings, name='settings'),
     path('settings/update_profile', views.update_profile, name='update_profile'),
-    path('reminder/', views.set_reminder, name='set_reminder')
+    path('reminder/', views.set_reminder, name='set_reminder'),
+    path('add_task/', views.add_task, name='add_task'),
+    path('dictionary/', views.translate, name='dictionary')
 ]
