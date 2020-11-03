@@ -95,8 +95,7 @@
     color: white;
     font-size: larger;
     font-weight: bolder;
-    border-bottom: 1px solid antiquewhite;
-    border-radius: 10%;
+    border-bottom: 1px solid gray;
     padding: 1%;
     margin-left: 5%;
 }

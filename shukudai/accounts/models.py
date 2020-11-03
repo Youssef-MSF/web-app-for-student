@@ -39,6 +39,8 @@ class Student(AbstractBaseUser):
     email = models.EmailField(max_length=60, unique=True)
     nationality = models.CharField(max_length=100, default=' ')
     image = models.ImageField(upload_to='pics')
+    """has_reminders = models.BooleanField(default=False)
+    has_tasks = models.BooleanField(default=False)"""
     date_joined = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
     last_login = models.DateTimeField(verbose_name='last login', auto_now=True)
     is_admin = models.BooleanField(default=False)

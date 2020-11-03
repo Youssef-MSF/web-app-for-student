@@ -35,6 +35,7 @@
         <a href="{% url 'register' %}">Sign up</a>
         {% else %}
         <a href="{% url 'logout' %}">Sign out</a>
+        <a href="{% url 'dashboard' %}">My dashboard</a>
         <span style="color: rgb(34, 240, 34);
     border: 1px solid rgb(20, 231, 20);
     border-radius: 40px;
@@ -42,7 +43,7 @@
     padding-left: 2%;
     padding-right: 2%;
     font-weight: bolder;
-    float: right;">{{ user.username }} online</span>
+    float: right;">online</span>
         {% endif %}
     </div>
 </div>

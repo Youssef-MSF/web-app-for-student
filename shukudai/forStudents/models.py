@@ -36,6 +36,7 @@ class Reminder(models.Model):
 class Task(models.Model):
     title = models.CharField(max_length=100)
     date = models.CharField(max_length=100)
+    is_done = models.BooleanField(default=False)
     student = models.ForeignKey('accounts.Student', on_delete=models.CASCADE, null=True)
 
     def __str__(self):

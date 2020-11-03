@@ -14,5 +14,8 @@ urlpatterns = [
     path('settings/update_profile', views.update_profile, name='update_profile'),
     path('reminder/', views.set_reminder, name='set_reminder'),
     path('add_task/', views.add_task, name='add_task'),
-    path('dictionary/', views.translate, name='dictionary')
+    path('dictionary/', views.translate, name='dictionary'),
+    path('del_reminder/', views.del_reminder, name='del_reminder'),
+    path('del_task/', views.del_task, name='del_task'),
+    path('done_task/', views.done_task, name='done_task')
 ]

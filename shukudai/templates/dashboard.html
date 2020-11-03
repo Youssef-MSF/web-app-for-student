@@ -18,22 +18,20 @@
     <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/icon type">
 </head>
 
-<body>
+<body onload="myFunction1();myFunction2();">
 
 <div class="main">
-    <div class="main__left">
-        <h3><i class="fas fa-user-graduate"></i>For Students</h3>
+    <div class="main__left" id="main-left">
+        <h3><i class="fas fa-user-graduate"></i>Shukudai</h3>
         <ul>
             <a href="{% url 'dashboard' %}" style="text-decoration: none; color: inherit;">
                 <li @click="changeMenu('Dashboard')"><i class="fas fa-columns"></i>Dashboard <span
                         class="menu-select"></span></li>
             </a>
-            <li @click="changeMenu('Learning plan')"><i class="fas fa-graduation-cap"></i>Learning plan<span
-                    class="menu-select"></span></li>
-            <li @click="changeMenu('Resources')"><i class="fas fa-folder-open"></i>Resources<span
-                    class="menu-select"></span></li>
+
             <a href="{% url 'forum' %}" style="text-decoration: none; color: inherit;">
-                <li @click="changeMenu('Chat')"><i class="fas fa-comments-alt"></i>Chat<span class="menu-select"></span>
+                <li @click="changeMenu('Chat')"><i class="fas fa-comments-alt"></i>Forum<span
+                        class="menu-select"></span>
                 </li>
             </a>
             <a href="{% url 'settings' %}" style="text-decoration: none; color: inherit;">
@@ -43,9 +41,12 @@
             </a>
         </ul>
     </div>
-    <div class="main__middle">
+    <div class="main__middle" id="main-middle">
         <div class="head">
-            <div class="head-title">
+            <div class="dark-mode-class">
+                <p><i id="dark-mode-id" onclick="toDarkMode()" class="fas fa-lightbulb-on"></i></p>
+            </div>
+            <div class="head-title" id="head-title">
                 Dashboard
             </div>
             <div class="head-date" id="today">
@@ -64,21 +65,37 @@
         <div class="activity">
             <div class="activity-calendar" id="calendar">
                 <div class="options">
-                    <div class="add-reminder-btn circlize" onclick="display('add-reminder-form')">
+                    <div style="display: flex;" class="add-reminder-btn circlize"
+                         onclick="display('add-reminder-form')">
                         <img src="{% static 'images/reminder.jpg' %}" alt="Reminder" width="100%" height="100%"
                              style="border-radius: 50%;">
                     </div>
+
                     <div class="add-task-btn circlize" onclick="display('add-task-form')">
                         <img src="{% static 'images/task.jpg' %}" alt="Task" width="100%" height="100%"
                              style="border-radius: 50%;">
                     </div>
+
                     <div class="dictionary-btn circlize" onclick="display('dictionary')">
                         <img src="{% static 'images/dictionary.jpg' %}" alt="Dictionary" width="100%" height="100%"
                              style="border-radius: 50%;">
                     </div>
                 </div>
                 <div class="details-option">
-                    <div id="add-reminder-form" style="display: none;">
+
+                    <div style="width:300px;" id="video-intro">
+                        <video style="margin-left: 5%; margin-top: 5%;" width="100%" autoplay>
+                            <source src="{% static 'videos/intro.mp4' %}" type="video/mp4">
+                        </video>
+                        <div class="footer-media">
+                            <a href="" style="color: #3598DC;"><i class="fab fa-facebook"></i></a>
+                            <a href="" style="color: #2B3137;"><i class="fab fa-github"></i></a>
+                            <a href="" style="color: red;"><i class="fab fa-youtube"></i></a>
+                            <a href="" style="color: #0073B1;"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+
+                    <div id="add-reminder-form" style="display: none; margin-top: -10%;">
                         <p style="text-align: center; font-size: larger; font-weight: bolder; font-family: consolas;">
                             Add new reminder</p>
                         <form method="post" action="{% url 'set_reminder' %}" class="reminder-class">
@@ -95,7 +112,7 @@
                             <input type="submit" value="Add reminder" id="reminder-submit">
                         </form>
                     </div>
-                    <div id="add-task-form" style="display: none;">
+                    <div id="add-task-form" style="display: none; margin-top: -10%;">
                         <p style="text-align: center; font-size: larger; font-weight: bolder; font-family: consolas;">
                             Add new task</p>
                         <form method="post" action="{% url 'add_task' %}" class="reminder-class">
@@ -106,8 +123,8 @@
 
                             <input type="text" name="user_id" value="{{ user.id }}" hidden>
 
-                            <label>Date:</label>
-                            <vuejs-datepicker name="task_date" id="reminder-date"></vuejs-datepicker>
+                            <label>Date:</label><br>
+                            <vuejs-datepicker name="task_date" id="task-date"></vuejs-datepicker>
 
                             <input type="submit" value="Add task" id="reminder-submit">
                         </form>
@@ -117,13 +134,14 @@
                             {% csrf_token %}
 
                             <label for="">Dictionary</label><br>
-                            <input type="text" name="word_to_search" class="word-to-search" placeholder="Type a word">
+                            <input type="text" name="word_to_search" class="word-to-search" placeholder="Type a word"
+                                   required>
                             <button type="submit" class="search-word-btn"><i class="fas fa-search"></i></button>
 
                         </form>
                         <div class="word-description">
                             <i class="fas fa-language"></i>
-                            <p> {{ description }} </p>
+                            <p>{{ description }}</p>
                         </div>
                     </div>
                 </div>
@@ -138,13 +156,23 @@
                         </form>
                     </div>
                 </div>
-                <div class="todo-all-tasks-container">
+
+                <div id="no-task-yet">
+                    <i class="fal fa-clipboard-check"><span
+                            style="font-size: large; margin-left: 20%; background-color: unset;"><br>No reminders yet</span></i>
+                </div>
+
+                <div class="todo-all-tasks-container" id="all-tasks">
+
                     {% for task in tasks %}
 
                     {% if task.student == user %}
                     <div class="todo-task-container">
-                        <p class="todo-task-text"> {{ task.title }} <i style="color: red;" class="fas fa-trash-alt"></i> <i
-                                class="fas fa-check-circle"></i></p>
+                        <p class="todo-task-text"> {% if task.is_done %}
+                            <del>{{ task.title }}</del>
+                            {% else %} {{ task.title }} {% endif %} <a href="/del_task?id={{ task.id }}"><i
+                                    style="color: red;" class="fas fa-trash-alt"></i></a>
+                            <a href="/done_task?id={{ task.id }}"><i class="fas fa-check-circle"></i></a></p>
                     </div>
 
                     {% endif %}
@@ -156,9 +184,9 @@
 
         </div>
     </div>
-    <div class="main__right">
+    <div class="main__right" id="main-right">
         <div class="logout">
-            <a href="{% url 'logout' %}">Logout <i class="fas fa-sign-out-alt"></i></a>
+            <a id="logout-style" href="{% url 'logout' %}">Logout <i class="fas fa-sign-out-alt"></i></a>
         </div>
         <div class="profile-pic-container">
             <div class="div1">
@@ -182,16 +210,26 @@
             <p style="text-align: center;">Student</p>
         </div>
         <div class="student-reminders">
-            <p>Reminders <i class="far fa-bell"><span></span></i></p>
+            <p>Reminders <i class="far fa-bell"><span id="has-reminder"></span></i></p>
 
             <hr>
 
-            <div style="overflow-y: scroll; height: 100%;">
+            <div id="no-reminder-yet">
+                <i class="far fa-bell"><span style="font-size: large; margin-left: 20%; background-color: unset;">No reminders yet</span></i>
+            </div>
+
+            <div style="overflow-y: scroll; height: 100%;" id="my-reminders">
+
                 {% for reminder in reminders %}
 
                 {% if reminder.student == user %}
                 <div class="reminder">
-                    <span class="reminder-type"><i class="far fa-bell"></i></span>
+                    <span class="reminder-type" onmouseleave="backToNormal({{ reminder.id }}, '-'+{{ reminder.id }})"
+                          onmouseover="changeBellToTrash({{ reminder.id }}, '-'+{{ reminder.id }})"><a
+                            href="/del_reminder?id={{ reminder.id }}"><i style="color: red; display: none;"
+                                                                         class="fas fa-trash-alt"
+                                                                         id="{{ reminder.id }}"></i></a><i
+                            class="far fa-bell" id="-{{ reminder.id }}"></i></span>
                     <p class="reminder-label">{{ reminder.title }}</p>
                     <p class="reminder-date">{{ reminder.date }}</p>
                 </div>
@@ -205,12 +243,76 @@
 </div>
 
 <script>
+
+    let light = true;
+        let dark = false;
+
+        let toDarkMode = function() {
+            if (light) {
+                document.getElementById('main-left').classList.add('main__left_dark');
+                document.getElementById('main-right').classList.add('main__right_dark');
+                document.getElementById('main-middle').classList.add('main__middle_dark');
+                document.getElementById('head-title').classList.add('head-title-dark');
+                document.getElementById('logout-style').classList.add('logout-style-dark');
+                document.getElementById('dark-mode-id').classList.add('dark-mode-class-light');
+                dark = true;
+                light = false;
+            } else {
+                document.getElementById('main-left').classList.remove('main__left_dark');
+                document.getElementById('main-right').classList.remove('main__right_dark');
+                document.getElementById('main-middle').classList.remove('main__middle_dark');
+                document.getElementById('head-title').classList.remove('head-title-dark');
+                document.getElementById('logout-style').classList.remove('logout-style-dark');
+                document.getElementById('dark-mode-id').classList.remove('dark-mode-class-light');
+                light = true;
+                dark = false;
+            }
+        }
+
+    let myFunction1 = function() {
+            if (document.getElementById('my-reminders').innerHTML === "") {
+            document.getElementById('has-reminder').style.display = 'none';
+            document.getElementById('no-reminder-yet').style.display = 'block';
+        }
+    }
+
+    let myFunction2 = function(){
+        if (document.getElementById('all-tasks').innerHTML === "") {
+            document.getElementById('no-task-yet').style.display = 'block';
+        }
+    }
+
+
+
+
+
+
+</script>
+
+<script>
+
         let display = function(id_element) {
+            document.getElementById('video-intro').style.display = 'none';
             document.getElementById('add-reminder-form').style.display = 'none';
             document.getElementById('add-task-form').style.display = 'none';
             document.getElementById('dictionary').style.display = 'none';
             document.getElementById(id_element).style.display = 'block';
         }
+
+        let changeBellToTrash = function(x, y) {
+            document.getElementById(y).style.display = 'none';
+            document.getElementById(x).style.display = 'block';
+        }
+
+        let backToNormal = function(x, y) {
+            document.getElementById(y).style.display = 'block';
+            document.getElementById(x).style.display = 'none';
+        }
+
+
+
+
+
 
 
 

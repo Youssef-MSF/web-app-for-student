@@ -14,14 +14,14 @@ body {
 
 .main__left {
     height: 100%;
-    flex-grow: 0.05;
+    flex: 0.2;
     background-color: #FEFEFE;
     color: #343452;
 }
 
 .main__middle {
     height: 100%;
-    flex-grow: 0.95;
+    flex: 0.8;
     background-color: #F5F5FB;
 }
 

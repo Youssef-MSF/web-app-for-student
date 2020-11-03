@@ -284,14 +284,12 @@ body {
 }
 
 .student-name {
-    margin-left: 27%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: larger;
     font-weight: bolder;
 }
 
 .student-tag {
-    margin-left: 42%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: larger;
     font-weight: bolder;
@@ -357,7 +355,7 @@ body {
     background-color: #5E81F4;
     width: 50px;
     height: 50px;
-    margin-bottom: 20%;
+    margin-bottom: 30%;
     border-radius: 50%;
 }
 
@@ -399,6 +397,10 @@ body {
     margin-bottom: 5%;
 }
 
+#reminder-date {
+    width: 100%;
+}
+
 #reminder-submit {
     border: none;
     width: 100%;
@@ -430,4 +432,73 @@ body {
 
 .word-description p {
     padding: 2%;
+}
+
+#no-reminder-yet {
+    height: 10%;
+    position: absolute;
+    left: 85%;
+    top: 75%;
+    font-size: xxx-large;
+    display: none;
+}
+
+#no-task-yet {
+    height: 10%;
+    position: absolute;
+    left: 58%;
+    top: 60%;
+    font-size: xxx-large;
+    display: none;
+    color: gray;
+    text-align: center;
+}
+
+.footer-media {
+    text-align: center;
+    margin-top: 12%;
+    margin-left: 15%;
+    font-size: x-large;
+}
+
+.main__right_dark {
+    height: 100%;
+    flex-grow: 0.25;
+    background-color: #2B3137;
+    color: azure;
+}
+
+.main__middle_dark {
+    height: 100%;
+    flex-grow: 0.70;
+    background-color: #3b3d3f;
+}
+
+.main__left_dark {
+    height: 100%;
+    flex-grow: 0.05;
+    background-color: #2B3137;
+    color: #FEFEFE;
+}
+
+.dark-mode-class {
+    position: absolute;
+    left: 74%;
+}
+
+.dark-mode-class-light {
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+.head-title-dark {
+    color: white;
+}
+
+.logout-style-dark {
+    color: azure;
 }

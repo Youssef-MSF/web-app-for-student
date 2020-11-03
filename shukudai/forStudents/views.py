@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages, auth
 from .models import Post, Comment, Reminder, Task
 from accounts.models import Student
-from .forms import UploadProfilePicForm
 
 from PyDictionary import PyDictionary
 
@@ -13,7 +12,9 @@ def home(request):
 
 def dashboard(request):
     reminders = Reminder.objects.all()
+
     tasks = Task.objects.all()
+
     return render(request, 'dashboard.html', {'reminders': reminders, 'tasks': tasks})
 
 
@@ -72,8 +73,7 @@ def upload_profile_image(request):
 
 
 def settings(request):
-    context = {'form': UploadProfilePicForm()}
-    return render(request, 'settings.html', context)
+    return render(request, 'settings.html')
 
 
 def update_profile(request):
@@ -143,3 +143,23 @@ def translate(request):
         description = translation.getMeanings()
 
     return render(request, 'dashboard.html', {'description': description})
+
+
+def del_reminder(request):
+    reminder_id = request.GET['id']
+    Reminder.objects.filter(id = reminder_id).delete()
+    return redirect('/dashboard')
+
+
+def del_task(request):
+    task_id = request.GET['id']
+    Task.objects.filter(id=task_id).delete()
+    return redirect('/dashboard')
+
+
+def done_task(request):
+    task_id = request.GET['id']
+    task = Task.objects.filter(id=task_id)[0]
+    task.is_done = True
+    task.save()
+    return redirect('/dashboard')

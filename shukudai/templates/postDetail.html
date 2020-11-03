@@ -35,6 +35,7 @@
         <a href="{% url 'register' %}">Sign up</a>
         {% else %}
         <a href="{% url 'logout' %}">Sign out</a>
+        <a href="{% url 'dashboard' %}">My dashboard</a>
         <span style="color: rgb(34, 240, 34);
     border: 1px solid rgb(20, 231, 20);
     border-radius: 40px;
@@ -42,7 +43,7 @@
     padding-left: 2%;
     padding-right: 2%;
     font-weight: bolder;
-    float: right;">{{ user.username }} online</span>
+    float: right;">online</span>
         {% endif %}
     </div>
 </div>
@@ -55,7 +56,8 @@
 
     <div class="poster-info">
         <p class="">{{ post.author.username }}</p>
-        <img src="{{ post.author.image.url }}" width="80px">
+        <img {% if user.image %} src="{{ user.image.url }}" {% else %}
+                                                            src="{% static 'images/mm.jpg' %}" {% endif %} width="80px">
         <form method="POST" action="{% url 'comment' %}" class="comment-form">
             {% csrf_token %}
             <p>Add comment</p>

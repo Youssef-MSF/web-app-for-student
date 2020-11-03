@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="{% static 'css/styling_settings.css' %}">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     <script src="https://unpkg.com/vue"></script>
@@ -18,78 +19,107 @@
 
 <body>
 
-    <div class="main">
-        <div class="main__left">
-            <h3><i class="fas fa-user-graduate"></i>For Students</h3>
-            <ul>
-                <li @click="changeMenu('Dashboard')"><i class="fas fa-columns"></i>Dashboard <span class="menu-select"></span></li>
-                <li @click="changeMenu('Learning plan')"><i class="fas fa-graduation-cap"></i>Learning plan<span class="menu-select"></span></li>
-                <li @click="changeMenu('Resources')"><i class="fas fa-folder-open"></i>Resources<span class="menu-select"></span></li>
-                <li @click="changeMenu('Chat')"><i class="fas fa-comments-alt"></i>Chat<span class="menu-select"></span></li>
-                <li @click="changeMenu('Settings')"><i class="fas fa-user-cog"></i>Settings<span class="menu-select"></span></li>
-            </ul>
-        </div>
-        <div class="main__middle">
-            <div class="head">
-                <div class="head-title">
-                    Settings
-                </div>
-                <div class="head-date" id="today">
-                </div>
+<div class="main">
+    <div class="main__left">
+        <h3><i class="fas fa-user-graduate"></i>Shukudai</h3>
+        <ul>
+            <a href="{% url 'dashboard' %}" style="text-decoration: none; color: inherit;">
+                <li @click="changeMenu('Dashboard')"><i class="fas fa-columns"></i>Dashboard <span
+                        class="menu-select"></span></li>
+            </a>
+            <a href="{% url 'forum' %}" style="text-decoration: none; color: inherit;">
+                <li @click="changeMenu('Chat')"><i class="fas fa-comments-alt"></i>Chat<span class="menu-select"></span>
+                </li>
+            </a>
+            <a href="{% url 'settings' %}" style="text-decoration: none; color: inherit;">
+                <li @click="changeMenu('Settings')"><i class="fas fa-user-cog"></i>Settings<span
+                        class="menu-select"></span>
+                </li>
+            </a>
+        </ul>
+    </div>
+    <div class="main__middle">
+        <div class="head">
+            <div class="head-title">
+                Settings
             </div>
-            <div class="activity">
-                <div class="signup-form-container">
-                    <form action="{% url 'update_profile' %}" class="signup-form" method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <div class="form-expression">
-                            <p>Update your personal information</p>
-                            <div class="profile-pic">
-                                <label for="profile_image"><img {% if user.image %} src="{{ user.image.url }}" {% else %} src="{% static 'images/mm.jpg' %}" {% endif %} alt="" width="10%"></label>
-                                <input type="file" name="profile_image" id="profile_image" hidden>
-                            </div>
-                            <div class="student-name">
-                                <p class="name">Youssef Moussaaif</p>
-                                <p class="student">Student </p>
-                            </div>
-                        </div>
-                        <div class="email-password-login">
-                            <label for="email">Email</label><input type="email" name="email" id="email" readonly value="{{ user.email }}">
-                            <label for="studentname">Studentname</label><input type="text" name="studentname" id="studentname" readonly value="{{ user.username }}">
-                            <label for="fullname">Full name</label><input type="text" name="fullname" id="fullname" required="true" value="{{ user.fullname }}">
-                            <label for="gender">Gender</label><input type="text" name="gender" id="gender" readonly value="{{ user.gender }}">
-                            <label for="age">Age</label>
-                            <input type="text" name="age" id="age" required="true" value="{{ user.age }}">
-                            <input type="text" name="user_id" hidden value="{{ user.id }}">
-                            <label for="nationality">Nationality</label><input type="text" name="nationality" id="nationality" required="true" value="Moroccan">
-                            <button type="button" class="change-password-btn" onclick="showUpdatePasswd()">Change my password <i class="far fa-caret-square-down"></i></button>
-                            <div id="password-update">
-                                <label for="old-password">Old password</label><input type="password" name="old_password" id="old-password">
-                                <label for="new-password">New password</label><input type="password" name="new_password" id="new-password">
-                            </div>
-                        </div>
-                        <div class="submit-button">
-                            <input type="submit" value="Save" style="font-weight: bolder;" required="true">
-                        </div>
-                        <td>
-                            <div id="calendar-container">
-
-                            </div>
-                        </td>
-                    </form>
-                </div>
+            <div class="head-date" id="today">
             </div>
         </div>
+        <div class="activity">
+            <div class="signup-form-container">
+                <form action="{% url 'update_profile' %}" class="signup-form" method="post"
+                      enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-expression">
+                        <p>Update your personal information</p>
+                        <div class="profile-pic">
+                            <label for="profile_image"><img {% if user.image %} src="{{ user.image.url }}" {% else %}
+                                                            src="{% static 'images/mm.jpg' %}" {% endif %} alt=""
+                                                            width="10%"></label>
+                            <input type="file" name="profile_image" id="profile_image" hidden>
+                        </div>
+                        <div class="student-name">
+                            <p class="name">Youssef Moussaaif</p>
+                            <p class="student">Student </p>
+                        </div>
+                    </div>
+                    <div class="email-password-login">
+                        <label for="email">Email</label><input type="email" name="email" id="email" readonly
+                                                               value="{{ user.email }}">
+                        <label for="studentname">Studentname</label><input type="text" name="studentname"
+                                                                           id="studentname" readonly
+                                                                           value="{{ user.username }}">
+                        <label for="fullname">Full name</label><input type="text" name="fullname" id="fullname"
+                                                                      required="true" value="{{ user.fullname }}">
+                        <label for="gender">Gender</label><input type="text" name="gender" id="gender" readonly
+                                                                 value="{{ user.gender }}">
+                        <label for="age">Age</label>
+                        <input type="text" name="age" id="age" required="true" value="{{ user.age }}">
+                        <input type="text" name="user_id" hidden value="{{ user.id }}">
+                        <label for="nationality">Nationality</label><input type="text" name="nationality"
+                                                                           id="nationality" required="true"
+                                                                           value="Moroccan">
+                        <button type="button" class="change-password-btn" onclick="showUpdatePasswd()">Change my
+                            password <i class="far fa-caret-square-down"></i></button>
+                        <div id="password-update">
+                            <label for="old-password">Old password</label><input type="password" name="old_password"
+                                                                                 id="old-password">
+                            <label for="new-password">New password</label><input type="password" name="new_password"
+                                                                                 id="new-password">
+                        </div>
+                    </div>
+                    <div class="submit-button">
+                        <input type="submit" value="Save" style="font-weight: bolder;" required="true">
+                    </div>
+                    <td>
+                        <div id="calendar-container">
 
+                        </div>
+                    </td>
+                </form>
+            </div>
+        </div>
     </div>
 
-    <script>
+</div>
+
+<script>
+        let x = true;
         let showUpdatePasswd = function() {
-            document.getElementById("password-update").style.display = "block";
+            if(x){
+                document.getElementById("password-update").style.display = "block";
+                x = false;
+            }else{
+                document.getElementById("password-update").style.display = "none";
+                x = true;
+            }
         }
-    </script>
+
+</script>
 
 
-    <script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>
