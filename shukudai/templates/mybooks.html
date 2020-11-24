@@ -1,0 +1,88 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Books</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/styling_books.css' %}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/icon type">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="logo-home-page">
+        <a href="/"><i class="fas fa-user-graduate"></i>&nbsp; Shukudai</a>
+    </div>
+    <div class="signup-login-home-page">
+        {% if not user.is_authenticated %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'register' %}">Sign up</a>
+        {% else %}
+        <a href="{% url 'logout' %}">Sign out</a>
+        <a href="{% url 'dashboard' %}">My dashboard</a>
+        <span style="color: rgb(34, 240, 34);
+    border: 1px solid rgb(20, 231, 20);
+    border-radius: 40px;
+    padding: 1px;
+    padding-left: 2%;
+    padding-right: 2%;
+    font-weight: bolder;
+    float: right;">online</span>
+        {% endif %}
+    </div>
+</div>
+
+<div class="add-new-book">
+    <a href="{% url 'addBook' %}"><i class="fal fa-plus-circle">Add new book</i></a>
+    <p style="color: #F7E5E9;">“Reading is essential for those who seek to rise above the ordinary.”  Jim Rohn</p>
+</div>
+
+<div class="container-fluid" style="background-color: #2B2D33; padding-bottom: 5%;">
+
+    <div class="row" style="text-align: center; display: inline-flex; margin-left: 10%;">
+        {% for book in books %}
+        {% if book.student == user %}
+        <div class="book">
+            <p class="book-title">{{ book.title }}</p>
+            <div class="book-description">
+                <embed src="{{ book }}" type="application/pdf"
+                       width="100%" height="300px">
+            </div>
+            <div class="read-btn">
+                <a href="{{ book }}"><button>Read book</button></a>
+            </div>
+        </div>
+        {% endif %}
+        <!---->
+        {% endfor %}
+
+
+    </div>
+</div>
+
+<div class="footer">
+    <div class="footer-copyright-media">
+        <div class="footer-copyright">
+            &copy; 2020 Shukudai. Created by Youssef
+        </div>
+        <div class="footer-media">
+            <a href=""><i class="fab fa-facebook"></i></a>
+            <a href=""><i class="fab fa-github"></i></a>
+            <a href=""><i class="fab fa-youtube"></i></a>
+            <a href=""><i class="fab fa-linkedin"></i></a>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

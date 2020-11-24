@@ -17,5 +17,13 @@ urlpatterns = [
     path('dictionary/', views.translate, name='dictionary'),
     path('del_reminder/', views.del_reminder, name='del_reminder'),
     path('del_task/', views.del_task, name='del_task'),
-    path('done_task/', views.done_task, name='done_task')
+    path('done_task/', views.done_task, name='done_task'),
+    path('revise/', views.revise, name='revise'),
+    path('myBooks/', views.mybooks, name='mybooks'),
+    path('add_book/', views.add_new_book, name='addBook'),
+    path('classroom_dashboard/', views.classroom_dashboard, name='classroom_dashboard'),
+    path('send_message_classroom/', views.send_classroom_message, name='send_classroom_message'),
+    path('classroom/<str:classroom_id>/', views.classroom_detail, name='classroom_detail'),
+    path('create_classroom/', views.create_classroom, name='create_classroom'),
+    path('create_poll/', views.create_poll, name='create_poll')
 ]

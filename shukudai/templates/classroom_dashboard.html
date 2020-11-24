@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/styling_classroomDashboard.css' %}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+            crossorigin="anonymous"></script>
+
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/icon type">
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="logo-home-page">
+        <a href="/"><i class="fas fa-user-graduate"></i>&nbsp; Shukudai</a>
+    </div>
+    <div class="signup-login-home-page">
+        {% if not user.is_authenticated %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'register' %}">Sign up</a>
+        {% else %}
+        <a href="{% url 'logout' %}">Sign out</a>
+        <a href="{% url 'dashboard' %}">My dashboard</a>
+        <span style="color: rgb(34, 240, 34);
+    border: 1px solid rgb(20, 231, 20);
+    border-radius: 40px;
+    padding: 1px;
+    padding-left: 2%;
+    padding-right: 2%;
+    font-weight: bolder;
+    float: right;">online</span>
+        {% endif %}
+    </div>
+</div>
+
+    <div class="classroom_dashboard_main">
+        <div class="enter_classroom_id">
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="text" name="classroom_id" id="" placeholder="Classroom id">
+                <input type="text" value="{{ user.id }}" name="user_id" hidden>
+                <button><i class="fad fa-sign-in-alt"></i></button>
+            </form>
+        </div>
+
+        <div class="or_class">
+            Or
+        </div>
+
+        <div class="create_classroom_title">
+            <h3>Create New Classroom </h3>
+            <form method="post" action="{% url 'create_classroom' %}">
+                {% csrf_token %}
+                <input type="text" name="host_id" value="{{ user.id }}" hidden>
+                <button type="submit" style="background-color: inherit; border: none;"><i class="fal fa-plus-circle"></i></button>
+            </form>
+        </div>
+    </div>
+
+<div class="footer">
+        <div class="footer-copyright-media">
+            <div class="footer-copyright">
+                &copy; 2020 Shukudai. Created by Youssef
+            </div>
+            <div class="footer-media">
+                <a href=""><i class="fab fa-facebook"></i></a>
+                <a href=""><i class="fab fa-github"></i></a>
+                <a href=""><i class="fab fa-youtube"></i></a>
+                <a href=""><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

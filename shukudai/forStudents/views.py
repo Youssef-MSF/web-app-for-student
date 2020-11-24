@@ -1,6 +1,9 @@
+import random
+from http.client import HTTPResponse
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages, auth
-from .models import Post, Comment, Reminder, Task
+from .models import Post, Comment, Reminder, Task, Book, Classroom, ClassroomMessage, Option, Poll
 from accounts.models import Student
 
 from PyDictionary import PyDictionary
@@ -147,7 +150,7 @@ def translate(request):
 
 def del_reminder(request):
     reminder_id = request.GET['id']
-    Reminder.objects.filter(id = reminder_id).delete()
+    Reminder.objects.filter(id=reminder_id).delete()
     return redirect('/dashboard')
 
 
@@ -163,3 +166,130 @@ def done_task(request):
     task.is_done = True
     task.save()
     return redirect('/dashboard')
+
+
+def revise(request):
+    return render(request, 'revise.html')
+
+
+def mybooks(request):
+    books = Book.objects.all()
+
+    return render(request, 'mybooks.html', {'books': books})
+
+
+def add_new_book(request):
+    if request.method == 'POST':
+        book_title = request.POST['book_title']
+        book = request.FILES.get('book')
+        student_id = request.POST['user_id']
+
+        student = Student.objects.filter(id=student_id)[0]
+
+        new_book = Book.objects.create(title=book_title, book=book, student=student)
+
+        new_book.save()
+
+        return redirect('/myBooks')
+
+    return render(request, 'addBook.html')
+
+
+def classroom_dashboard(request):
+    if request.method == 'POST':
+        classroom_id = request.POST['classroom_id']
+        user_id = request.POST['user_id']
+
+        user = Student.objects.filter(id=user_id)[0]
+        classroom = Classroom.objects.filter(id_classroom=classroom_id)[0]
+
+        classroom.users.add(user)
+
+        classroom.save()
+        return redirect('/classroom/' + classroom_id)
+    else:
+        return render(request, 'classroom_dashboard.html')
+
+
+def send_classroom_message(request):
+    if request.method == 'POST':
+        message_content = request.POST['message_to_discussion']
+        writer_id = request.POST['user_id']
+        classroom_id = request.POST['classroom_id']
+        writer = Student.objects.filter(id=writer_id)[0]
+        classroom = Classroom.objects.filter(id_classroom=classroom_id)[0]
+
+        message = ClassroomMessage.objects.create(message_content=message_content, writer=writer, classroom=classroom)
+
+        message.save()
+
+        return redirect('/classroom/' + classroom_id)
+
+
+def classroom_detail(request, classroom_id):
+    classroom = get_object_or_404(Classroom, id_classroom=classroom_id)
+    classroom_corr = Classroom.objects.filter(id_classroom=classroom_id)[0]
+    messages = ClassroomMessage.objects.all()
+    try:
+        poll = Poll.objects.filter(classroom=classroom_corr)[0]
+    except:
+        poll = None
+    return render(request, 'classroom.html', {'classroom_corr': classroom_corr, 'messages': messages, 'poll': poll})
+
+
+def create_classroom(request):
+    letters_nums = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+                    'u',
+                    'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
+                    'P',
+                    'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+                    '_']
+
+    host_id = request.POST['host_id']
+    host = Student.objects.filter(id=host_id)[0]
+
+    all_classroom_ids = []
+
+    all_classrooms = Classroom.objects.all()
+    for classroom in all_classrooms:
+        all_classroom_ids.append(classroom.id_classroom)
+
+    random_classroom_id = ''
+    for i in range(random.randint(6, 15)):
+        random_classroom_id += random.choice(letters_nums)
+
+    if random_classroom_id in all_classroom_ids:
+        create_classroom(request)
+    else:
+        classroom = Classroom.objects.create(id_classroom=random_classroom_id, host_id=host_id)
+        classroom.users.add(host)
+        classroom.save()
+        return redirect('/classroom/' + random_classroom_id)
+
+
+def create_poll(request):
+    user_id = request.POST['user_id']
+    classroom_id = request.POST['classroom_id']
+    poll_title = request.POST['poll_title']
+
+    creator = Student.objects.filter(id=user_id)[0]
+    classroom = Classroom.objects.filter(id_classroom=classroom_id)[0]
+
+    poll = Poll.objects.create(title=poll_title, creator=creator, classroom=classroom)
+    poll.save()
+    options = []
+    for parameter in request.POST:
+        if 'Option' not in parameter:
+            continue
+        else:
+            options.append(parameter)
+            option = Option.objects.create(value=request.POST[parameter], poll_id=poll.id)
+            option.save()
+
+            poll.options.add(option)
+            poll.save()
+
+    classroom.has_poll = 1
+    classroom.save()
+
+    return redirect('/classroom/' + classroom_id)

@@ -1,0 +1,121 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-color: rgb(226, 224, 224);
+}
+
+.classroom_dashboard_main {
+    text-align: center;
+    padding: 10%;
+}
+
+.enter_classroom_id {
+    background-color: #393939;
+    padding: 10%;
+    border-radius: 10px;
+}
+
+.enter_classroom_id input {
+    height: 40px;
+    width: 80%;
+    padding: 1%;
+    font-weight: bolder;
+    font-family: 'consolas';
+}
+
+.enter_classroom_id button {
+    height: 40px;
+    width: 80px;
+    border: none;
+    border-radius: 10px;
+}
+
+.create_classroom {
+    border-radius: 20px;
+}
+
+.create_classroom_title {
+    background-color: #2B3137;
+    color: aliceblue;
+    padding: 1%;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.create_classroom_title i {
+    color: aliceblue;
+    font-size: xxx-large;
+}
+
+.or_class {
+    margin-top: 2%;
+    font-weight: bolder;
+}
+
+.navbar {
+    height: 10%;
+    background-color: #2B3137;
+    display: flex;
+}
+
+.logo-home-page a {
+    color: white;
+}
+
+.logo-home-page a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.signup-login-home-page {
+    flex: 0.3;
+}
+
+.signup-login-home-page a {
+    color: white;
+    font-size: large;
+    font-weight: bolder;
+    border-bottom: 1px solid gray;
+    padding: 1%;
+    margin-left: 5%;
+}
+
+.signup-login-home-page a:hover {
+    text-decoration: none;
+    color: gray;
+    border-bottom: 2px solid gray;
+}
+
+.footer {
+    padding: 1%;
+}
+
+.footer-copyright-media {
+    text-align: center;
+}
+
+.footer-copyright {
+    color: black;
+    margin-bottom: 1%;
+    font-weight: bold;
+}
+
+.footer-media {
+    display: contents;
+}
+
+.footer-media a {
+    color: #586069;
+    margin-left: 2%;
+}
+
+.footer-media a:hover {
+    color: initial;
+}

@@ -36,6 +36,16 @@
                         class="menu-select"></span>
                 </li>
             </a>
+            <a href="{% url 'revise' %}" style="text-decoration: none; color: inherit;">
+                <li @click="changeMenu('Settings')"><i class="fas fa-graduation-cap"></i>Revising Mode<span
+                        class="menu-select"></span>
+                </li>
+            </a>
+            <a href="{% url 'mybooks' %}" style="text-decoration: none; color: inherit;">
+                <li @click="changeMenu('Settings')"><i class="fad fa-book"></i>My books<span
+                        class="menu-select"></span>
+                </li>
+            </a>
         </ul>
     </div>
     <div class="main__middle">

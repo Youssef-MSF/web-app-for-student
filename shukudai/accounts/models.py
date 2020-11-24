@@ -39,6 +39,7 @@ class Student(AbstractBaseUser):
     email = models.EmailField(max_length=60, unique=True)
     nationality = models.CharField(max_length=100, default=' ')
     image = models.ImageField(upload_to='pics')
+    #classroom = models.ForeignKey('forStudent.Classroom', on_delete=models.CASCADE, null=True)
     """has_reminders = models.BooleanField(default=False)
     has_tasks = models.BooleanField(default=False)"""
     date_joined = models.DateTimeField(verbose_name='date joined', auto_now_add=True)

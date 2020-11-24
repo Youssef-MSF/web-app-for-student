@@ -1,0 +1,319 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room</title>
+    <link rel="stylesheet" href="{% static 'css/styling_room.css' %}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/icon type">
+
+    <style>
+        .modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 40px;
+  height: 25px;
+  width: 25px;
+  background-color: gray;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="main_classroom">
+    <div class="classroom_heading">
+        <div class="classroom_id">
+            <p>classroom_id : <span>{{ classroom_corr.id_classroom }}</span></p>
+        </div>
+        <div class="classroom_host">
+            <p style="position: absolute; right: 600px; font-weight: bolder;"><a href="{% url 'dashboard' %}"
+                                                                                 style="color: white;">Dashboard</a></p>
+            <img src="{{ user.image.url }}" alt="" width="40px" height="40px">
+            <p>@{{ user.username }}</p>
+        </div>
+    </div>
+    <div class="classroom_discussion_users">
+        <div class="classroom_discussion">
+            <div class="discussion_title">
+                <h3>Discussion</h3>
+            </div>
+            <hr>
+
+            <!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div style="text-align: center;" class="modal-content">
+    <span class="close">&times;</span>
+    <form action="{% url 'create_poll' %}" method="post">
+        {% csrf_token %}
+            <h1>Create Poll</h1>
+            <label class="options_class" for="poll_title">Poll Title :</label><br>
+            <input type="text" name="poll_title" id="poll_title"><br>
+            <label class="options_class">Options &nbsp;</label><i id="add_option" onclick="addOption()" class="fal fa-plus-circle"></i><br>
+
+            <div id="options">
+
+            </div>
+
+            <input type="text" name="user_id" value="{{ user.id }}" hidden>
+            <input type="text" name="classroom_id" value="{{ classroom_corr.id_classroom }}" hidden>
+
+            <input type="submit" value="Create" id="create_poll_btn">
+        </form>
+  </div>
+
+</div>
+
+            <div class="messages_list" id="liste-messages">
+
+                {% for message in messages %}
+
+                {% if message.classroom == classroom_corr %}
+
+                <div {% if message.writer == user %} class="message_host" {% else %} class="message_others" {% endif %}>
+                    <p class="message_text">{{ message.message_content }}</p><img src="{{ message.writer.image.url }}"
+                                                                                  alt="" width="35px" height="35px">
+                </div>
+
+                {% endif %}
+
+                {% endfor %}
+
+            </div>
+            <div class="message_input">
+                <form action="{% url 'send_classroom_message' %}" method="post">
+                    {% csrf_token %}
+                    <input type="text" placeholder="Message" name="message_to_discussion" id="message_to_discussion"
+                           required>
+                    <input type="text" name="classroom_id" value="{{ classroom_corr.id_classroom }}" hidden>
+                    <input type="text" name="user_id" value="{{ user.id }}" hidden>
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="classroom_users">
+
+            <div class="create_poll">
+
+                {% if classroom_corr.has_poll == 0 %}
+
+                <div class="create_poll_title">
+                    <h3>Create New Poll</h3>
+                </div>
+                <div class="create_poll_icon">
+                    <button class="create_poll_icon" style="background-color: inherit; border: none;" id="myBtn"><i class="fal fa-plus-circle"></i></button>
+                </div>
+                <div class="create_poll_text">
+                    Decide with others
+                </div>
+
+                {% else %}
+
+                <div class="create_poll_title">
+                    <h3>Created Poll</h3>
+                    <p>"{{ poll.title }}"</p>
+                </div>
+                <div style="text-align: center; margin-top: 5%">
+                    {% for option in poll.options.all %}
+
+                        <label class="container">{{ option.value }}
+  <input type="radio" name="choices" value="{{ option.value }}">
+  <span class="checkmark"></span>
+</label>
+
+                    {% endfor %}
+                </div>
+
+                {% endif %}
+
+            </div>
+
+            <div class="connected_users_title">
+                <h3>Connected Users</h3>
+            </div>
+            <div class="connected_users_list">
+
+                {% for user in classroom_corr.users.all %}
+
+                <div class="user_info">
+                    <img src="{{ user.image.url }}" alt="" width="20px" height="20px">
+                    <p>{{ user.fullname }}</p> <span class="active_status"></span>
+                </div>
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var i = 0;
+    addOption = function() {
+        var label = document.createElement("label");
+        var node = document.createTextNode("Option " + (i + 1) + " : ");
+        label.appendChild(node);
+
+        var option = document.createElement("input");
+        var type = document.createAttribute("type");
+        type.value = "text"
+        option.setAttributeNode(type)
+
+        var name = document.createAttribute("name");
+        name.value = "Option " + (i + 1);
+        option.setAttributeNode(name)
+
+
+        var ln = document.createElement("br");
+
+        document.getElementById("options").appendChild(label);
+        document.getElementById("options").appendChild(ln);
+        document.getElementById("options").appendChild(option);
+        document.getElementById("options").appendChild(ln);
+
+        i++;
+    }
+</script>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+<script>
+        var toscrolldown = document.getElementById('liste-messages');
+        toscrolldown.scrollTop = toscrolldown.scrollHeight;
+
+
+
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+body {
+    height: 100%;
+}
+
+.book {
+    border: 1px solid gray;
+    margin-top: 2%;
+    border-radius: 20px;
+    box-shadow: 10px 10px gray;
+    padding-bottom: 3%;
+    margin-right: 80px;
+    background-color: white;
+}
+
+.book-title {
+    font-size: x-large;
+    font-family: 'consolas';
+    margin-top: 5%;
+    font-weight: bolder;
+}
+
+.book-description {
+    overflow: hidden;
+}
+
+.read-btn button {
+    border: none;
+    border-radius: 5px;
+    padding: 2%;
+    background-color: rgb(57, 238, 57);
+    font-weight: bolder;
+}
+
+.read-btn button:hover {
+    background-color: rgb(90, 248, 90);
+}
+
+.add-new-book {
+    font-size: xx-large;
+    float: right;
+    margin-right: 2%;
+    font-weight: bolder;
+}
+
+.navbar {
+    height: 10%;
+    background-color: #2B3137;
+    display: flex;
+}
+
+.logo-home-page a {
+    color: white;
+}
+
+.logo-home-page a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.signup-login-home-page {
+    flex: 0.3;
+}
+
+.signup-login-home-page a {
+    color: white;
+    font-size: large;
+    font-weight: bolder;
+    border-bottom: 1px solid gray;
+    padding: 1%;
+    margin-left: 5%;
+}
+
+.signup-login-home-page a:hover {
+    text-decoration: none;
+    color: gray;
+    border-bottom: 2px solid gray;
+}
+
+.footer {
+    padding: 1%;
+    margin-top: 2%;
+}
+
+.footer-copyright-media {
+    text-align: center;
+}
+
+.footer-copyright {
+    color: black;
+    margin-bottom: 1%;
+    font-weight: bold;
+}
+
+.footer-media {
+    display: contents;
+}
+
+.footer-media a {
+    color: #586069;
+    margin-left: 2%;
+}
+
+.footer-media a:hover {
+    color: initial;
+}

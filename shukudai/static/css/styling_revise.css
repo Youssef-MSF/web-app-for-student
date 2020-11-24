@@ -1,0 +1,105 @@
+body {
+    background-color: #2B2D33;
+    text-align: center;
+    height: 100%;
+}
+
+.time {
+    color: white;
+    margin-top: 3%;
+    font-size: 1000%;
+    font-family: 'consolas';
+}
+
+button {
+    width: 100px;
+    height: 50px;
+    border-radius: 20px;
+    border: none;
+    margin: 1%;
+    font-weight: bolder;
+    font-family: 'consolas';
+}
+
+#time-spinning {
+    color: rgb(34, 231, 149);
+}
+
+.quick-messages1 {
+    position: absolute;
+    left: 80%;
+    width: 230px;
+    color: aliceblue;
+    border-radius: 20px;
+    border: 1px solid gray;
+    font-size: x-large;
+    box-shadow: 5px 10px gray;
+}
+
+.quick-messages1 i {
+    color: yellow;
+    float: left;
+    margin-left: 10%;
+    margin-top: 2%;
+}
+
+.quick-messages2 {
+    position: absolute;
+    left: 80%;
+    top: 50%;
+    width: 230px;
+    color: aliceblue;
+    border-radius: 20px;
+    border: 1px solid gray;
+    font-size: x-large;
+    box-shadow: 5px 10px gray;
+}
+
+.quick-messages2 i {
+    color: yellow;
+    float: left;
+    margin-left: 10%;
+    margin-top: 2%;
+}
+
+#start-button:hover {
+    background-color: green;
+}
+
+#reset-button:hover {
+    background-color: orange;
+}
+
+.navbar {
+    height: 10%;
+    display: flex;
+    margin-bottom: 5%;
+}
+
+.logo-home-page a {
+    color: white;
+}
+
+.logo-home-page a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.signup-login-home-page {
+    flex: 0.3;
+}
+
+.signup-login-home-page a {
+    color: white;
+    font-size: large;
+    font-weight: bolder;
+    border-bottom: 1px solid gray;
+    padding: 1%;
+    margin-left: 5%;
+}
+
+.signup-login-home-page a:hover {
+    text-decoration: none;
+    color: gray;
+    border-bottom: 2px solid gray;
+}

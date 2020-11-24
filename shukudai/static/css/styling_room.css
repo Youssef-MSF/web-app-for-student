@@ -1,0 +1,316 @@
+    html {
+        height: 97%;
+    }
+
+    body {
+        height: 100%;
+        background-color: rgb(226, 224, 224);
+    }
+
+    .main_classroom {
+        height: 100%;
+    }
+
+    .classroom_heading {
+        display: flex;
+        background-color: #2B2D33;
+        padding: 1%;
+    }
+
+    .classroom_id {
+        color: white;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .classroom_id span {
+        font-weight: bolder;
+        font-family: 'consolas';
+    }
+
+    .classroom_host {
+        display: flex;
+        position: absolute;
+        right: 5%;
+        color: beige;
+    }
+
+    .classroom_host img {
+        margin-top: 5%;
+        margin-right: 5%;
+        border-radius: 50%;
+    }
+
+    .classroom_discussion_users {
+        display: flex;
+        margin-top: 2%;
+        height: 80%;
+    }
+
+    .classroom_discussion {
+        flex: 80%;
+        padding: 3%;
+        margin: 1%;
+    }
+
+    .discussion_title {
+        background-color: #2B3137;
+        color: aliceblue;
+        padding: 1%;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .classroom_users {
+        flex: 20%;
+        padding: 3%;
+    }
+
+    .connected_users_title {
+        background-color: #2B3137;
+        color: aliceblue;
+        padding: 1%;
+        border-radius: 10px;
+        text-align: center;
+        margin-top: 2%;
+        margin-bottom: 2%;
+    }
+
+    .connected_users_list {
+        overflow-y: hidden;
+        height: 50%;
+    }
+
+    .connected_users_list:hover {
+        overflow-y: scroll;
+    }
+
+    .create_poll {
+        height: 200px;
+    }
+
+    .create_poll_title {
+        background-color: #2B3137;
+        color: aliceblue;
+        padding: 1%;
+        border-radius: 10px;
+        text-align: center;
+        margin-top: 2%;
+        margin-bottom: 2%;
+    }
+
+    .create_poll_icon {
+        font-size: 50px;
+        text-align: center;
+        margin-top: 3%;
+        font-weight: bolder;
+    }
+
+    .create_poll_icon i {
+        color: #2B3137;
+    }
+
+    .create_poll_text {
+        text-align: center;
+        font-size: x-large;
+        font-weight: bolder;
+    }
+
+    .user_info {
+        display: flex;
+        border-bottom: 1px solid gray;
+        margin: 2%;
+        padding-left: 5%;
+        padding-right: 5%;
+        border: none;
+        border-bottom: 1px solid gray;
+    }
+
+    .user_info p {
+        width: 100%;
+        font-weight: bolder;
+        font-family: 'consolas';
+        font-size: large;
+    }
+
+    .user_info img {
+        border-radius: 50%;
+        margin-top: 7%;
+        margin-right: 2%;
+    }
+
+    .active_status {
+        background-color: green;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        position: relative;
+        top: 20px;
+        float: right;
+    }
+
+    .messages_list {
+        margin-top: 3%;
+        background: linear-gradient(#E9E6E3, white);
+        /*background-image: url("/images/hadik.jpg");*/
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 1%;
+        height: 65%;
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+
+    .message_input {
+        width: 71%;
+        position: fixed;
+        bottom: 60px;
+        left: 50px;
+    }
+
+    .message_input input {
+        width: 90%;
+        padding: 1%;
+        border-radius: 10px;
+        border: 1px solid gray;
+        font-weight: bolder;
+    }
+
+    .message_input button {
+        border: none;
+        font-size: larger;
+        color: aliceblue;
+        background-color: #2B3137;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        padding-right: 10px;
+    }
+
+    .message_host {
+        display: flex;
+        position: relative;
+        left: 80%;
+        margin-right: 50%;
+    }
+
+    .message_others {
+        display: flex;
+    }
+
+    .message_text {
+        background-color: gray;
+        padding: 1%;
+        border-radius: 20px;
+        width: 100px;
+    }
+
+    img {
+        border-radius: 50%;
+        margin-top: 2%;
+        margin-left: 1%;
+    }
+
+    .user_info:hover {
+        background-color: rgb(164, 167, 166);
+    }
+
+    .navbar {
+    height: 8%;
+    background-color: #2B3137;
+    display: flex;
+    margin-bottom: 1%;
+}
+
+.logo-home-page a {
+    color: white;
+}
+
+.logo-home-page a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.signup-login-home-page {
+    flex: 0.3;
+}
+
+.signup-login-home-page a {
+    color: white;
+    font-size: large;
+    font-weight: bolder;
+    border-bottom: 1px solid gray;
+    padding: 1%;
+    margin-left: 5%;
+}
+
+.signup-login-home-page a:hover {
+    text-decoration: none;
+    color: gray;
+    border-bottom: 2px solid gray;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+#poll_title {
+    padding: 1%;
+    border: none;
+    border-bottom: 1px solid black;
+    margin-bottom: 5%;
+}
+
+#options {
+    display: block;
+}
+
+#options input {
+    border: none;
+    border-bottom: 1px solid gray;
+    padding: 2%;
+    margin-bottom: 3%;
+}
+
+#options label {
+    font-weight: bolder;
+    font-family: 'consolas';
+}
+
+.options_class {
+    font-size: x-large;
+    font-weight: bolder;
+    font-family: 'consolas';
+}
+
+#add_option {
+    font-size: x-large;
+}
+
+#create_poll_btn {
+    background-color: green;
+    border: none;
+    border-radius: 10px;
+    padding: 2%;
+    padding-left: 3%;
+    padding-right: 3%;
+    color: aliceblue;
+    font-weight: bolder;
+    margin-top: 5%;
+}
