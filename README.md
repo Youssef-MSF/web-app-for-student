@@ -1,7 +1,25 @@
-# web-app-for-student
+# Shukudai : Web app for students
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Setup](#setup)
 
-This is a web app created with Django.
+## General info
+This Project is a web app or a plateform where students can do a lot of their stuff.
+	
+## Technologies
+Project is created with:
+* Django : Python backend web framework
+* HTML5, CSS3, Javascript
+* Vue JS Directives
 
-it's used for students where they can set reminders, tasks and talk to each other in a forum.
+	
+## Setup
+To run this project, install the requirements with the command :
 
-This app is created in the participation of the Timathon competition organized by Tim
+ > pip install requirements.txt
+ 
+And then run the command :
+ > python manage.py runserver
+
+## I hope you like it :) 
